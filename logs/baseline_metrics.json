@@ -1,0 +1,15 @@
+{
+  "split_date": "2025-12-31",
+  "test_size": 1750,
+  "train_size": 17354,
+  "models": {
+    "naive_persistence": {
+      "sMAPE": 28.58,
+      "MAE": 22.72
+    },
+    "ridge_arx": {
+      "sMAPE": 26.44,
+      "MAE": 16.99
+    }
+  }
+}

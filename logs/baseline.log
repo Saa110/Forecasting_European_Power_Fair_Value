@@ -1,0 +1,36 @@
+2026-03-14 14:29:31,148 [INFO] ============================================================
+2026-03-14 14:29:31,148 [INFO] Baseline Modeling & Validation
+2026-03-14 14:29:31,148 [INFO] ============================================================
+2026-03-14 14:29:31,148 [INFO] Loading data ...
+2026-03-14 14:29:31,197 [INFO] Dataset shape: (19104, 17)
+2026-03-14 14:29:31,201 [INFO] Train: 17354 rows (2024-01-07 23:00:00+00:00 → 2025-12-31 00:00:00+00:00)
+2026-03-14 14:29:31,201 [INFO] Test:  1750 rows (2025-12-31 01:00:00+00:00 → 2026-03-13 22:00:00+00:00)
+2026-03-14 14:29:31,201 [INFO] Running Naive Persistence baseline ...
+2026-03-14 14:29:31,201 [INFO] Naive Persistence — sMAPE: 28.58% | MAE: 22.72 €/MWh
+2026-03-14 14:29:31,201 [INFO] Training Ridge Regression (ARX) baseline ...
+2026-03-14 14:29:31,211 [INFO] Top features:
+              feature  coefficient  abs_coef
+     wind_forecast_mw   -33.811285 33.811285
+    solar_forecast_mw   -33.515503 33.515503
+       actual_load_mw    30.469174 30.469174
+        price_lag_24h    14.676407 14.676407
+          net_load_mw    -9.078142  9.078142
+       price_lag_168h     6.688722  6.688722
+         load_lag_24h    -5.159024  5.159024
+                month     2.585721  2.585721
+           is_weekend     2.366911  2.366911
+          day_of_week    -2.137755  2.137755
+renewable_penetration     1.187177  1.187177
+          hour_of_day     0.518716  0.518716
+2026-03-14 14:29:31,211 [INFO] Ridge (ARX)       — sMAPE: 26.44% | MAE: 16.99 €/MWh
+2026-03-14 14:29:31,211 [INFO] Metrics saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/baseline_metrics.json
+2026-03-14 14:29:31,211 [INFO] Generating forecast vs actual plot ...
+2026-03-14 14:29:31,312 [INFO]   Saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/baseline_forecast_vs_actual.png
+2026-03-14 14:29:31,312 [INFO] ============================================================
+2026-03-14 14:29:31,312 [INFO] Baseline Results:
+2026-03-14 14:29:31,312 [INFO]   Model                   sMAPE        MAE
+2026-03-14 14:29:31,312 [INFO]   ──────────────────── ──────── ──────────
+2026-03-14 14:29:31,312 [INFO]   Naive Persistence      28.58%     22.72
+2026-03-14 14:29:31,312 [INFO]   Ridge (ARX)            26.44%     16.99
+2026-03-14 14:29:31,312 [INFO] ============================================================
+2026-03-14 14:29:31,319 [INFO] Predictions saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/baseline_predictions.csv

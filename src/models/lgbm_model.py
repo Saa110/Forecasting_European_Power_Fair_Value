@@ -19,6 +19,8 @@ import json
 import logging
 from pathlib import Path
 
+import time
+
 import numpy as np
 import pandas as pd
 import lightgbm as lgb
@@ -82,13 +84,19 @@ def rolling_window_train(df, split_date="2025-12-31"):
     """
     test = df[df.index > split_date].copy()
     test_dates = sorted(test.index.normalize().unique())
+    n_days = len(test_dates)
 
-    logger.info(f"Test dates: {len(test_dates)} days")
+    logger.info(f"Test dates: {n_days} days")
     logger.info(f"Rolling window: {WINDOW_DAYS} days")
+    logger.info(f"Quantiles: {QUANTILES}")
+    logger.info(f"Models to train: {n_days * len(QUANTILES)} ({n_days} days × {len(QUANTILES)} quantiles)")
 
     all_preds = []
+    t_start = time.time()
 
     for i, date in enumerate(test_dates):
+        day_start = time.time()
+
         # Define training window: [date - 60 days, date)
         train_end = date
         train_start = train_end - pd.Timedelta(days=WINDOW_DAYS)
@@ -100,9 +108,9 @@ def rolling_window_train(df, split_date="2025-12-31"):
             logger.warning(f"  Skip {date.date()}: insufficient training data ({len(train_window)} rows)")
             continue
 
-        X_train = train_window[FEATURE_COLS].values
+        X_train = train_window[FEATURE_COLS]
         y_train = train_window["price_eur_mwh"].values
-        X_test = test_day[FEATURE_COLS].values
+        X_test = test_day[FEATURE_COLS]
 
         day_preds = {"timestamp": test_day.index, "actual": test_day["price_eur_mwh"].values}
 
@@ -127,8 +135,18 @@ def rolling_window_train(df, split_date="2025-12-31"):
         day_df = pd.DataFrame(day_preds).set_index("timestamp")
         all_preds.append(day_df)
 
-        if (i + 1) % 10 == 0 or i == 0:
-            logger.info(f"  Day {i+1}/{len(test_dates)}: {date.date()}")
+        # Progress logging
+        elapsed = time.time() - t_start
+        avg_per_day = elapsed / (i + 1)
+        remaining = avg_per_day * (n_days - i - 1)
+        pct = 100 * (i + 1) / n_days
+        day_time = time.time() - day_start
+
+        if (i + 1) % 5 == 0 or i == 0 or i == n_days - 1:
+            logger.info(
+                f"  [{pct:5.1f}%] Day {i+1}/{n_days} ({date.date()}) "
+                f"| {day_time:.1f}s/day | ETA: {remaining:.0f}s"
+            )
 
     result = pd.concat(all_preds)
 

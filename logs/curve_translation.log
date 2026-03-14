@@ -1,0 +1,28 @@
+2026-03-14 14:45:15,653 [INFO] ============================================================
+2026-03-14 14:45:15,653 [INFO] Prompt Curve Translation & Trading Signals
+2026-03-14 14:45:15,653 [INFO] ============================================================
+2026-03-14 14:45:15,663 [INFO] Loaded ensemble predictions: (1751, 4)
+2026-03-14 14:45:15,663 [INFO] Aggregating hourly forecasts to curve views ...
+2026-03-14 14:45:15,673 [INFO]   Aggregated into 12 weekly curve views
+2026-03-14 14:45:15,673 [INFO] Generating trading signals ...
+2026-03-14 14:45:15,674 [INFO]   Generated signals for 12 weeks
+2026-03-14 14:45:15,674 [INFO] Curve translation saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/curve_translation.json
+2026-03-14 14:45:15,674 [INFO] Generating curve view plot ...
+2026-03-14 14:45:15,793 [INFO]   Saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/curve_view.png
+2026-03-14 14:45:15,793 [INFO] 
+2026-03-14 14:45:15,794 [INFO]   Week          Base FV  Forward      RP Signal                    Conviction     
+2026-03-14 14:45:15,794 [INFO]   ──────────── ──────── ──────── ─────── ───────────────────────── ───────────────
+2026-03-14 14:45:15,794 [INFO]   2025-W01        70.2    86.8   16.6 Strong Sell (Overvalued)  Full position  
+2026-03-14 14:45:15,794 [INFO]   2026-W01        57.9    63.3    5.4 Mild Sell                 Half position  
+2026-03-14 14:45:15,794 [INFO]   2026-W02       111.7   109.8   -1.9 Mild Buy                  Half position  
+2026-03-14 14:45:15,794 [INFO]   2026-W03       103.8   112.9    9.1 Strong Sell (Overvalued)  Full position  
+2026-03-14 14:45:15,794 [INFO]   2026-W04       114.6   120.8    6.2 Mild Sell                 Half position  
+2026-03-14 14:45:15,794 [INFO]   2026-W05       122.0   129.9    8.0 Mild Sell                 Half position  
+2026-03-14 14:45:15,794 [INFO]   2026-W06       109.8   106.5   -3.3 Mild Buy                  Half position  
+2026-03-14 14:45:15,794 [INFO]   2026-W07       111.0   107.7   -3.3 Mild Buy                  Half position  
+2026-03-14 14:45:15,794 [INFO]   2026-W08        90.3    85.7   -4.6 Mild Buy                  Half position  
+2026-03-14 14:45:15,794 [INFO]   2026-W09        81.2    77.6   -3.5 Mild Buy                  Half position  
+2026-03-14 14:45:15,794 [INFO]   2026-W10       103.8   117.2   13.4 Strong Sell (Overvalued)  Full position  
+2026-03-14 14:45:15,794 [INFO]   2026-W11        97.5    95.3   -2.1 Mild Buy                  Half position  
+2026-03-14 14:45:15,794 [INFO] 
+2026-03-14 14:45:15,794 [INFO] Done.

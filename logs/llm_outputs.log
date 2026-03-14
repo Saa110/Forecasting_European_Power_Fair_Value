@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-03-14T14:45:32.982230",
+  "umm_id": "UMM-2026-001",
+  "umm_title": "Unplanned Outage \u2014 J\u00e4nschwalde Unit B (900 MW)",
+  "source": "rule_based",
+  "raw_prompt": "Classify this REMIT UMM:\n\nTitle: Unplanned Outage \u2014 J\u00e4nschwalde Unit B (900 MW)\nBody: LEAG reports an unplanned full outage of J\u00e4nschwalde lignite power plant Unit B (910 MW) effective immediately due to a catastrophic boiler tube failure. The unit had been operating at full capacity. Estimated return to service: not before 14 days. The outage removes approximately 910 MW of baseload capacity from the German grid. Market participants should expect upward pressure on day-ahead prices, particularly during peak hours.\n\nReturn STRICT JSON only.",
+  "raw_response": "{\"relevance_level\": 1, \"root_cause\": \"Generation Outage\", \"justification\": \"Unplanned outage with significant capacity loss detected.\"}",
+  "parsed": {
+    "relevance_level": 1,
+    "root_cause": "Generation Outage",
+    "justification": "Unplanned outage with significant capacity loss detected."
+  },
+  "invalidate_signal": true
+}
+
+{
+  "timestamp": "2026-03-14T14:45:32.982371",
+  "umm_id": "UMM-2026-002",
+  "umm_title": "Planned Maintenance \u2014 Isar 2 Valve Replacement (50 MW derate)",
+  "source": "rule_based",
+  "raw_prompt": "Classify this REMIT UMM:\n\nTitle: Planned Maintenance \u2014 Isar 2 Valve Replacement (50 MW derate)\nBody: PreussenElektra GmbH announces a planned partial derate of Isar Unit 2 for routine safety valve replacement. The derate reduces output by approximately 50 MW for a 72-hour window starting 2026-03-20 at 06:00 CET. This maintenance was scheduled in the annual maintenance plan and has no material impact on system adequacy. Normal operations expected to resume by 2026-03-23.\n\nReturn STRICT JSON only.",
+  "raw_response": "{\"relevance_level\": 3, \"root_cause\": \"Planned Maintenance\", \"justification\": \"Routine planned maintenance with minimal market impact.\"}",
+  "parsed": {
+    "relevance_level": 3,
+    "root_cause": "Planned Maintenance",
+    "justification": "Routine planned maintenance with minimal market impact."
+  },
+  "invalidate_signal": false
+}
+
+{
+  "timestamp": "2026-03-14T14:45:32.982461",
+  "umm_id": "UMM-2026-003",
+  "umm_title": "Extreme Weather Alert \u2014 Dunkelflaute Expected",
+  "source": "rule_based",
+  "raw_prompt": "Classify this REMIT UMM:\n\nTitle: Extreme Weather Alert \u2014 Dunkelflaute Expected\nBody: DWD (German Weather Service) issues an extreme weather alert for the period 2026-03-25 to 2026-03-31. A persistent high-pressure system combined with thick cloud cover is forecast to produce Dunkelflaute conditions across Northern Germany. Expected impact: wind generation dropping below 2 GW (typical: 15-25 GW) and solar generation near zero for consecutive days. Combined with high heating demand, this scenario may trigger price spikes exceeding 200 EUR/MWh. Gas-fired peaker plants expected to set marginal prices.\n\nReturn STRICT JSON only.",
+  "raw_response": "{\"relevance_level\": 1, \"root_cause\": \"Extreme Weather\", \"justification\": \"Extreme weather event with high potential for supply shortfall.\"}",
+  "parsed": {
+    "relevance_level": 1,
+    "root_cause": "Extreme Weather",
+    "justification": "Extreme weather event with high potential for supply shortfall."
+  },
+  "invalidate_signal": false
+}
+

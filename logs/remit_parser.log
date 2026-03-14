@@ -1,0 +1,38 @@
+2026-03-14 14:45:32,981 [INFO] ============================================================
+2026-03-14 14:45:32,982 [INFO] REMIT UMM Parser — LLM Integration
+2026-03-14 14:45:32,982 [INFO] ============================================================
+2026-03-14 14:45:32,982 [INFO] 
+Processing: UMM-2026-001 — Unplanned Outage — Jänschwalde Unit B (900 MW)
+2026-03-14 14:45:32,982 [WARNING]   OpenAI API key not found — using rule-based fallback
+2026-03-14 14:45:32,982 [INFO]   Source:      rule_based
+2026-03-14 14:45:32,982 [INFO]   Relevance:   1
+2026-03-14 14:45:32,982 [INFO]   Root Cause:  Generation Outage
+2026-03-14 14:45:32,982 [INFO]   Reason:      Unplanned outage with significant capacity loss detected.
+2026-03-14 14:45:32,982 [INFO]   Invalidate:  ⚠️  YES
+2026-03-14 14:45:32,982 [INFO] 
+Processing: UMM-2026-002 — Planned Maintenance — Isar 2 Valve Replacement (50 MW derate)
+2026-03-14 14:45:32,982 [WARNING]   OpenAI API key not found — using rule-based fallback
+2026-03-14 14:45:32,982 [INFO]   Source:      rule_based
+2026-03-14 14:45:32,982 [INFO]   Relevance:   3
+2026-03-14 14:45:32,982 [INFO]   Root Cause:  Planned Maintenance
+2026-03-14 14:45:32,982 [INFO]   Reason:      Routine planned maintenance with minimal market impact.
+2026-03-14 14:45:32,982 [INFO]   Invalidate:  ✅ NO
+2026-03-14 14:45:32,982 [INFO] 
+Processing: UMM-2026-003 — Extreme Weather Alert — Dunkelflaute Expected
+2026-03-14 14:45:32,982 [WARNING]   OpenAI API key not found — using rule-based fallback
+2026-03-14 14:45:32,982 [INFO]   Source:      rule_based
+2026-03-14 14:45:32,982 [INFO]   Relevance:   1
+2026-03-14 14:45:32,982 [INFO]   Root Cause:  Extreme Weather
+2026-03-14 14:45:32,982 [INFO]   Reason:      Extreme weather event with high potential for supply shortfall.
+2026-03-14 14:45:32,982 [INFO]   Invalidate:  ✅ NO
+2026-03-14 14:45:32,982 [INFO] 
+LLM outputs logged → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/llm_outputs.log
+2026-03-14 14:45:32,982 [INFO] 
+2026-03-14 14:45:32,982 [INFO] ============================================================
+2026-03-14 14:45:32,982 [INFO] Summary:
+2026-03-14 14:45:32,982 [INFO]   UMM ID            Relevance Root Cause           Invalidate
+2026-03-14 14:45:32,982 [INFO]   ──────────────── ────────── ──────────────────── ──────────
+2026-03-14 14:45:32,982 [INFO]   UMM-2026-001              1 Generation Outage        YES ⚠️
+2026-03-14 14:45:32,982 [INFO]   UMM-2026-002              3 Planned Maintenance        NO ✅
+2026-03-14 14:45:32,982 [INFO]   UMM-2026-003              1 Extreme Weather            NO ✅
+2026-03-14 14:45:32,982 [INFO] ============================================================

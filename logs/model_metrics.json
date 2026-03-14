@@ -1,0 +1,43 @@
+{
+  "comparison": [
+    {
+      "model": "Naive Persistence",
+      "sMAPE": 28.58,
+      "MAE": 22.72
+    },
+    {
+      "model": "Ridge (ARX)",
+      "sMAPE": 26.44,
+      "MAE": 16.99
+    },
+    {
+      "model": "LightGBM",
+      "sMAPE": 17.86,
+      "MAE": 11.97
+    },
+    {
+      "model": "XGBoost",
+      "sMAPE": 17.52,
+      "MAE": 11.77
+    },
+    {
+      "model": "Ensemble",
+      "sMAPE": 17.71,
+      "MAE": 11.77
+    }
+  ],
+  "ensemble_detail": {
+    "model": "Ensemble",
+    "weights": {
+      "LightGBM": 0.498,
+      "XGBoost": 0.502
+    },
+    "test_size": 1751,
+    "sMAPE_median": 17.71,
+    "MAE_median": 11.77,
+    "pinball_q10": 3.01,
+    "pinball_q50": 5.88,
+    "pinball_q90": 3.86,
+    "quantile_crossings": 0
+  }
+}

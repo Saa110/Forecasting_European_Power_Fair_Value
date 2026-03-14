@@ -1,0 +1,11 @@
+{
+  "model": "XGBoost",
+  "window_days": 60,
+  "test_size": 1751,
+  "sMAPE_median": 17.52,
+  "MAE_median": 11.77,
+  "pinball_q10": 3.22,
+  "pinball_q50": 5.88,
+  "pinball_q90": 4.08,
+  "quantile_crossings": 0
+}

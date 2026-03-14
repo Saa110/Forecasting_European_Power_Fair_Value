@@ -1,0 +1,19 @@
+2026-03-14 14:41:44,157 [INFO] ============================================================
+2026-03-14 14:41:44,157 [INFO] Weighted Ensemble & Full Model Comparison
+2026-03-14 14:41:44,157 [INFO] ============================================================
+2026-03-14 14:41:44,168 [INFO] LightGBM predictions: (1751, 4)
+2026-03-14 14:41:44,168 [INFO] XGBoost predictions:  (1751, 4)
+2026-03-14 14:41:44,171 [INFO] Ensemble weights — LightGBM: 0.498, XGBoost: 0.502
+2026-03-14 14:41:44,171 [INFO]   (RMSE LightGBM: 17.37, XGBoost: 17.21)
+2026-03-14 14:41:44,174 [INFO] 
+2026-03-14 14:41:44,174 [INFO]   Model                   sMAPE        MAE
+2026-03-14 14:41:44,174 [INFO]   ──────────────────── ──────── ──────────
+2026-03-14 14:41:44,174 [INFO]   Naive Persistence      28.58%     22.72
+2026-03-14 14:41:44,174 [INFO]   Ridge (ARX)            26.44%     16.99
+2026-03-14 14:41:44,174 [INFO]   LightGBM               17.86%     11.97
+2026-03-14 14:41:44,174 [INFO]   XGBoost                17.52%     11.77
+2026-03-14 14:41:44,174 [INFO]   Ensemble               17.71%     11.77
+2026-03-14 14:41:44,174 [INFO] 
+2026-03-14 14:41:44,274 [INFO]   Saved fan chart → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/fan_chart.png
+2026-03-14 14:41:44,391 [INFO]   Saved comparison → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/model_comparison.png
+2026-03-14 14:41:44,391 [INFO] Done.

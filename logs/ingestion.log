@@ -1,0 +1,114 @@
+2026-03-14 14:08:45,684 [INFO] ============================================================
+2026-03-14 14:08:45,684 [INFO] Data Ingestion Orchestrator
+2026-03-14 14:08:45,685 [INFO] Market: DE_LU | Range: 2024-01-01 → 2024-01-07
+2026-03-14 14:08:45,685 [INFO] ============================================================
+2026-03-14 14:08:45,685 [INFO] [Tier 2] Attempting Energy-Charts API (fallback) ...
+2026-03-14 14:08:45,744 [INFO] [Fallback] Energy-Charts pull for DE_LU (2024-01-01 → 2024-01-07)
+2026-03-14 14:08:45,744 [INFO]   [Energy-Charts] Pulling Day-Ahead Prices for de ...
+2026-03-14 14:08:45,744 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/price | params={'bzn': 'DE', 'start': '2024-01-01', 'end': '2024-01-07'}
+2026-03-14 14:08:47,857 [WARNING] [Tier 2] ❌ Energy-Charts failed: 400 Client Error: Bad Request for url: https://api.energy-charts.info/price?bzn=DE&start=2024-01-01&end=2024-01-07
+2026-03-14 14:08:47,858 [INFO] [Tier 2] Falling back to local cache ...
+2026-03-14 14:08:47,860 [INFO] [Tier 3] Serving from local CSV cache (last known good) ...
+2026-03-14 14:08:47,861 [ERROR] [Tier 3] ❌ Cache miss: No cached file found at /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/day_ahead_prices.csv. Cannot serve data — all sources exhausted.
+2026-03-14 14:08:47,861 [ERROR] ALL DATA SOURCES EXHAUSTED. Cannot proceed. Please check your API token and network connectivity.
+2026-03-14 14:11:47,883 [INFO] ============================================================
+2026-03-14 14:11:47,883 [INFO] Data Ingestion Orchestrator
+2026-03-14 14:11:47,883 [INFO] Market: DE_LU | Range: 2024-01-01 → 2024-01-07
+2026-03-14 14:11:47,883 [INFO] ============================================================
+2026-03-14 14:11:47,883 [INFO] [Tier 2] Attempting Energy-Charts API (fallback) ...
+2026-03-14 14:11:47,947 [INFO] [Fallback] Energy-Charts pull for DE_LU (2024-01-01 → 2024-01-07)
+2026-03-14 14:11:47,947 [INFO]   [Energy-Charts] Pulling Day-Ahead Prices for DE-LU ...
+2026-03-14 14:11:47,947 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/price | params={'bzn': 'DE-LU', 'start': '2024-01-01', 'end': '2024-01-07'}
+2026-03-14 14:11:49,385 [INFO]   [Energy-Charts] Prices: 168 rows retrieved
+2026-03-14 14:11:49,385 [INFO]   [Energy-Charts] Pulling Total Load for de ...
+2026-03-14 14:11:49,385 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/public_power | params={'country': 'de', 'start': '2024-01-01', 'end': '2024-01-07'}
+2026-03-14 14:11:50,968 [INFO]   [Energy-Charts] Load: 672 rows retrieved
+2026-03-14 14:11:50,968 [INFO]   [Energy-Charts] Pulling Wind & Solar for de ...
+2026-03-14 14:11:50,968 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/public_power | params={'country': 'de', 'start': '2024-01-01', 'end': '2024-01-07'}
+2026-03-14 14:11:55,600 [INFO]   [Energy-Charts] Wind+Solar: 672 rows retrieved
+2026-03-14 14:11:55,608 [INFO]   Saved 168 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/day_ahead_prices.csv
+2026-03-14 14:11:55,613 [INFO]   Saved 672 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/actual_total_load.csv
+2026-03-14 14:11:55,619 [INFO]   Saved 672 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/wind_solar_forecast.csv
+2026-03-14 14:11:55,621 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/day_ahead_prices.csv
+2026-03-14 14:11:55,625 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/actual_total_load.csv
+2026-03-14 14:11:55,628 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/wind_solar_forecast.csv
+2026-03-14 14:11:55,628 [INFO] [Tier 2] ✅ Energy-Charts pull successful.
+2026-03-14 14:11:55,628 [INFO] ============================================================
+2026-03-14 14:11:55,629 [INFO] Ingestion Summary:
+2026-03-14 14:11:55,629 [INFO]   prices      : 168 rows | source: FALLBACK
+2026-03-14 14:11:55,629 [INFO]   load        : 672 rows | source: FALLBACK
+2026-03-14 14:11:55,629 [INFO]   wind_solar  : 672 rows | source: FALLBACK
+2026-03-14 14:11:55,629 [INFO] ============================================================
+2026-03-14 14:12:23,005 [INFO] ============================================================
+2026-03-14 14:12:23,005 [INFO] Data Ingestion Orchestrator
+2026-03-14 14:12:23,005 [INFO] Market: DE_LU | Range: 2024-01-01 → 2024-12-31
+2026-03-14 14:12:23,005 [INFO] ============================================================
+2026-03-14 14:12:23,005 [INFO] [Tier 0] Force-cache mode — loading from local cache ...
+2026-03-14 14:12:23,013 [INFO]   [Cache] Loaded 168 rows from /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/day_ahead_prices.csv
+2026-03-14 14:12:23,014 [INFO]   [Cache] Loaded 672 rows from /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/actual_total_load.csv
+2026-03-14 14:12:23,016 [INFO]   [Cache] Loaded 672 rows from /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/wind_solar_forecast.csv
+2026-03-14 14:12:23,019 [INFO]   Saved 168 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/day_ahead_prices.csv
+2026-03-14 14:12:23,021 [INFO]   Saved 672 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/actual_total_load.csv
+2026-03-14 14:12:23,023 [INFO]   Saved 672 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/wind_solar_forecast.csv
+2026-03-14 14:12:23,023 [INFO] ============================================================
+2026-03-14 14:12:23,023 [INFO] Ingestion Summary:
+2026-03-14 14:12:23,024 [INFO]   prices      : 168 rows | source: CACHED
+2026-03-14 14:12:23,024 [INFO]   load        : 672 rows | source: CACHED
+2026-03-14 14:12:23,024 [INFO]   wind_solar  : 672 rows | source: CACHED
+2026-03-14 14:12:23,024 [INFO] ============================================================
+2026-03-14 14:12:39,287 [INFO] ============================================================
+2026-03-14 14:12:39,287 [INFO] Data Ingestion Orchestrator
+2026-03-14 14:12:39,287 [INFO] Market: DE_LU | Range: 2024-01-01 → 2024-12-31
+2026-03-14 14:12:39,287 [INFO] ============================================================
+2026-03-14 14:12:39,287 [INFO] [Tier 2] Attempting Energy-Charts API (fallback) ...
+2026-03-14 14:12:39,349 [INFO] [Fallback] Energy-Charts pull for DE_LU (2024-01-01 → 2024-12-31)
+2026-03-14 14:12:39,349 [INFO]   [Energy-Charts] Pulling Day-Ahead Prices for DE-LU ...
+2026-03-14 14:12:39,349 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/price | params={'bzn': 'DE-LU', 'start': '2024-01-01', 'end': '2024-12-31'}
+2026-03-14 14:12:45,369 [INFO]   [Energy-Charts] Prices: 8784 rows retrieved
+2026-03-14 14:12:45,369 [INFO]   [Energy-Charts] Pulling Total Load for de ...
+2026-03-14 14:12:45,369 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/public_power | params={'country': 'de', 'start': '2024-01-01', 'end': '2024-12-31'}
+2026-03-14 14:12:50,268 [INFO]   [Energy-Charts] Load: 35136 rows retrieved
+2026-03-14 14:12:50,273 [INFO]   [Energy-Charts] Pulling Wind & Solar for de ...
+2026-03-14 14:12:50,273 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/public_power | params={'country': 'de', 'start': '2024-01-01', 'end': '2024-12-31'}
+2026-03-14 14:13:16,630 [INFO]   [Energy-Charts] Wind+Solar: 35136 rows retrieved
+2026-03-14 14:13:16,657 [INFO]   Saved 8784 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/day_ahead_prices.csv
+2026-03-14 14:13:16,718 [INFO]   Saved 35136 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/actual_total_load.csv
+2026-03-14 14:13:16,790 [INFO]   Saved 35136 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/wind_solar_forecast.csv
+2026-03-14 14:13:16,807 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/day_ahead_prices.csv
+2026-03-14 14:13:16,870 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/actual_total_load.csv
+2026-03-14 14:13:16,966 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/wind_solar_forecast.csv
+2026-03-14 14:13:16,966 [INFO] [Tier 2] ✅ Energy-Charts pull successful.
+2026-03-14 14:13:16,966 [INFO] ============================================================
+2026-03-14 14:13:16,966 [INFO] Ingestion Summary:
+2026-03-14 14:13:16,966 [INFO]   prices      : 8,784 rows | source: FALLBACK
+2026-03-14 14:13:16,966 [INFO]   load        : 35,136 rows | source: FALLBACK
+2026-03-14 14:13:16,966 [INFO]   wind_solar  : 35,136 rows | source: FALLBACK
+2026-03-14 14:13:16,966 [INFO] ============================================================
+2026-03-14 14:17:01,450 [INFO] ============================================================
+2026-03-14 14:17:01,450 [INFO] Data Ingestion Orchestrator
+2026-03-14 14:17:01,450 [INFO] Market: DE_LU | Range: 2024-01-01 → 2026-03-13
+2026-03-14 14:17:01,450 [INFO] ============================================================
+2026-03-14 14:17:01,450 [INFO] [Tier 2] Attempting Energy-Charts API (fallback) ...
+2026-03-14 14:17:01,509 [INFO] [Fallback] Energy-Charts pull for DE_LU (2024-01-01 → 2026-03-13)
+2026-03-14 14:17:01,509 [INFO]   [Energy-Charts] Pulling Day-Ahead Prices for DE-LU ...
+2026-03-14 14:17:01,509 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/price | params={'bzn': 'DE-LU', 'start': '2024-01-01', 'end': '2026-03-13'}
+2026-03-14 14:17:06,976 [INFO]   [Energy-Charts] Prices: 31083 rows retrieved
+2026-03-14 14:17:06,976 [INFO]   [Energy-Charts] Pulling Total Load for de ...
+2026-03-14 14:17:06,976 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/public_power | params={'country': 'de', 'start': '2024-01-01', 'end': '2026-03-13'}
+2026-03-14 14:17:15,037 [INFO]   [Energy-Charts] Load: 77088 rows retrieved
+2026-03-14 14:17:15,045 [INFO]   [Energy-Charts] Pulling Wind & Solar for de ...
+2026-03-14 14:17:15,046 [INFO]   [Energy-Charts] GET https://api.energy-charts.info/public_power | params={'country': 'de', 'start': '2024-01-01', 'end': '2026-03-13'}
+2026-03-14 14:19:57,712 [INFO]   [Energy-Charts] Wind+Solar: 77088 rows retrieved
+2026-03-14 14:19:57,778 [INFO]   Saved 31083 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/day_ahead_prices.csv
+2026-03-14 14:19:57,906 [INFO]   Saved 77088 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/actual_total_load.csv
+2026-03-14 14:19:58,053 [INFO]   Saved 77088 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/wind_solar_forecast.csv
+2026-03-14 14:19:58,104 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/day_ahead_prices.csv
+2026-03-14 14:19:58,231 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/actual_total_load.csv
+2026-03-14 14:19:58,380 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/wind_solar_forecast.csv
+2026-03-14 14:19:58,380 [INFO] [Tier 2] ✅ Energy-Charts pull successful.
+2026-03-14 14:19:58,380 [INFO] ============================================================
+2026-03-14 14:19:58,380 [INFO] Ingestion Summary:
+2026-03-14 14:19:58,381 [INFO]   prices      : 31,083 rows | source: FALLBACK
+2026-03-14 14:19:58,381 [INFO]   load        : 77,088 rows | source: FALLBACK
+2026-03-14 14:19:58,381 [INFO]   wind_solar  : 77,088 rows | source: FALLBACK
+2026-03-14 14:19:58,381 [INFO] ============================================================

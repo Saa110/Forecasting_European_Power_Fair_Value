@@ -1,0 +1,57 @@
+2026-03-14 14:23:56,795 [INFO] ============================================================
+2026-03-14 14:23:56,795 [INFO] QA & Feature Engineering Pipeline
+2026-03-14 14:23:56,795 [INFO] ============================================================
+2026-03-14 14:23:56,795 [INFO] Step 1: Loading raw data ...
+2026-03-14 14:23:56,862 [INFO]   Loaded prices: (31083, 2)
+2026-03-14 14:23:56,983 [INFO]   Loaded load: (77088, 2)
+2026-03-14 14:23:57,115 [INFO]   Loaded wind_solar: (77088, 3)
+2026-03-14 14:23:57,115 [INFO] Step 2: UTC standardization ...
+2026-03-14 14:23:57,115 [INFO]   QA: prices: already in UTC ✓
+2026-03-14 14:23:57,115 [INFO]   QA: load: already in UTC ✓
+2026-03-14 14:23:57,115 [INFO]   QA: wind_solar: already in UTC ✓
+2026-03-14 14:23:57,115 [INFO] Step 3: Resampling to hourly ...
+2026-03-14 14:23:57,125 [INFO]   QA: prices: 15-min → hourly (31083 → 19272 rows)
+2026-03-14 14:23:57,130 [INFO]   QA: load: 15-min → hourly (77088 → 19272 rows)
+2026-03-14 14:23:57,137 [INFO]   QA: wind_solar: 15-min → hourly (77088 → 19272 rows)
+2026-03-14 14:23:57,138 [INFO] Step 4: Merging datasets ...
+2026-03-14 14:23:57,139 [INFO]   QA: Merged shape: (19272, 5)
+2026-03-14 14:23:57,139 [INFO]   QA: Date range: 2023-12-31 23:00:00+00:00 → 2026-03-13 22:00:00+00:00
+2026-03-14 14:23:57,139 [INFO]   QA: Inner join retained 19272 rows
+2026-03-14 14:23:57,139 [INFO] Step 5: Handling missing values ...
+2026-03-14 14:23:57,140 [INFO]   QA: Missing values per column:
+price_eur_mwh        0
+actual_load_mw       0
+wind_forecast_mw     0
+solar_forecast_mw    0
+2026-03-14 14:23:57,141 [INFO]   QA: Missing values after imputation:
+price_eur_mwh        0
+actual_load_mw       0
+wind_forecast_mw     0
+solar_forecast_mw    0
+2026-03-14 14:23:57,141 [INFO] Step 6: Flagging outliers ...
+2026-03-14 14:23:57,142 [INFO]   QA: Price IQR bounds: [-74.90, 248.24] €/MWh
+2026-03-14 14:23:57,142 [INFO]   QA: Price outliers flagged: 182 (0.94%)
+2026-03-14 14:23:57,142 [INFO]   QA: Negative prices: 1057
+2026-03-14 14:23:57,142 [INFO]   QA: Price range: [-250.32, 936.28] €/MWh
+2026-03-14 14:23:57,143 [INFO] Step 7: Boundary checks ...
+2026-03-14 14:23:57,143 [INFO]   QA: Negative load values: 0
+2026-03-14 14:23:57,143 [INFO]   QA: Negative wind_forecast_mw: 0
+2026-03-14 14:23:57,143 [INFO]   QA: Negative solar_forecast_mw: 0
+2026-03-14 14:23:57,143 [INFO]   QA: Index strictly monotonic: True
+2026-03-14 14:23:57,143 [INFO] Step 8: Feature engineering ...
+2026-03-14 14:23:57,148 [INFO]   QA: Added 11 features: ['hour_of_day', 'day_of_week', 'month', 'is_weekend', 'price_lag_24h', 'price_lag_168h', 'load_lag_24h', 'renewable_penetration', 'price_rolling_mean_24h', 'price_rolling_std_24h', 'net_load_mw']
+2026-03-14 14:23:57,148 [INFO]   QA: Dropped 168 rows due to lag NaNs (first 7 days)
+2026-03-14 14:23:57,148 [INFO]   QA: Final dataset shape: (19104, 17)
+2026-03-14 14:23:57,148 [INFO] Step 9: Generating figures ...
+2026-03-14 14:24:00,956 [INFO]   Saved figure → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/price_timeseries.png
+2026-03-14 14:24:01,042 [INFO]   Saved figure → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/price_distribution.png
+2026-03-14 14:24:01,150 [INFO] Final dataset saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/model_ready.csv
+2026-03-14 14:24:01,150 [INFO]   QA: Saved: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/model_ready.csv | Shape: (19104, 17)
+2026-03-14 14:24:01,150 [INFO] QA report saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/qa_report.txt
+2026-03-14 14:24:01,150 [INFO] ============================================================
+2026-03-14 14:24:01,150 [INFO] Pipeline Summary:
+2026-03-14 14:24:01,150 [INFO]   Final shape:    (19104, 17)
+2026-03-14 14:24:01,150 [INFO]   Date range:     2024-01-07 23:00:00+00:00 → 2026-03-13 22:00:00+00:00
+2026-03-14 14:24:01,150 [INFO]   Columns:        ['price_eur_mwh', 'actual_load_mw', 'wind_forecast_mw', 'solar_forecast_mw', 'source_quality', 'price_outlier', 'hour_of_day', 'day_of_week', 'month', 'is_weekend', 'price_lag_24h', 'price_lag_168h', 'load_lag_24h', 'renewable_penetration', 'price_rolling_mean_24h', 'price_rolling_std_24h', 'net_load_mw']
+2026-03-14 14:24:01,151 [INFO]   NaN remaining:  0
+2026-03-14 14:24:01,151 [INFO] ============================================================

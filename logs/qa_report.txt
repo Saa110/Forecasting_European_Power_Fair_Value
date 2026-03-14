@@ -1,0 +1,35 @@
+============================================================
+QUALITY ASSURANCE REPORT
+============================================================
+
+[UTC] prices: already in UTC ✓
+[UTC] load: already in UTC ✓
+[UTC] wind_solar: already in UTC ✓
+[Resample] prices: 15-min → hourly (31083 → 19272 rows)
+[Resample] load: 15-min → hourly (77088 → 19272 rows)
+[Resample] wind_solar: 15-min → hourly (77088 → 19272 rows)
+[Merge] Merged shape: (19272, 5)
+[Merge] Date range: 2023-12-31 23:00:00+00:00 → 2026-03-13 22:00:00+00:00
+[Merge] Inner join retained 19272 rows
+[NaN-Before] Missing values per column:
+price_eur_mwh        0
+actual_load_mw       0
+wind_forecast_mw     0
+solar_forecast_mw    0
+[NaN-After] Missing values after imputation:
+price_eur_mwh        0
+actual_load_mw       0
+wind_forecast_mw     0
+solar_forecast_mw    0
+[Outliers] Price IQR bounds: [-74.90, 248.24] €/MWh
+[Outliers] Price outliers flagged: 182 (0.94%)
+[Outliers] Negative prices: 1057
+[Outliers] Price range: [-250.32, 936.28] €/MWh
+[Boundary] Negative load values: 0
+[Boundary] Negative wind_forecast_mw: 0
+[Boundary] Negative solar_forecast_mw: 0
+[Boundary] Index strictly monotonic: True
+[Features] Added 11 features: ['hour_of_day', 'day_of_week', 'month', 'is_weekend', 'price_lag_24h', 'price_lag_168h', 'load_lag_24h', 'renewable_penetration', 'price_rolling_mean_24h', 'price_rolling_std_24h', 'net_load_mw']
+[Features] Dropped 168 rows due to lag NaNs (first 7 days)
+[Features] Final dataset shape: (19104, 17)
+[Output] Saved: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/model_ready.csv | Shape: (19104, 17)

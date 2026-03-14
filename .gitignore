@@ -1,0 +1,28 @@
+# Virtual environment
+.venv/
+
+# Data files (large CSVs / Parquet)
+data/raw/
+data/processed/
+data/cache/
+
+# Environment variables / secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -126,6 +126,110 @@ def standardize_utc(df: pd.DataFrame, name: str, report: QAReport) -> pd.DataFra
 
 
 # ---------------------------------------------------------------------------
+# Step 2b: DST / Missing-Hour Anomaly Detection
+# ---------------------------------------------------------------------------
+def detect_dst_anomalies(df: pd.DataFrame, name: str, report: QAReport) -> pd.DataFrame:
+    """
+    Automated anomaly detection for European DST transitions.
+
+    CET/CEST rules (DE bidding zone):
+      - Spring forward (last Sunday of March): 02:00->03:00 CET, lose 1h -> 23-hour day
+      - Fall back (last Sunday of October): 03:00->02:00 CEST, gain 1h -> 25-hour day
+
+    Also detects: gaps > 1 hour, duplicate timestamps.
+    """
+    # --- Check for duplicate timestamps ---
+    n_dupes = df.index.duplicated().sum()
+    if n_dupes > 0:
+        report.add("DST/Anomaly", f"{name}: WARNING {n_dupes} duplicate timestamps — keeping first")
+        df = df[~df.index.duplicated(keep="first")]
+    else:
+        report.add("DST/Anomaly", f"{name}: No duplicate timestamps ✓")
+
+    # --- Check for gaps > expected interval ---
+    if len(df) > 1:
+        time_diffs = pd.Series(df.index).diff().dropna()
+        # Use the 95th percentile of diffs to handle mixed-resolution data.
+        # E.g., price data has both 15-min (ENTSO-E) and 1-hour (Energy-Charts)
+        # intervals. median would be 15 min, but 1h is also normal.
+        expected_max = time_diffs.quantile(0.95)
+        large_gaps = time_diffs[time_diffs > expected_max * 2]
+
+        if len(large_gaps) > 0:
+            report.add("DST/Anomaly",
+                f"{name}: Found {len(large_gaps)} gaps exceeding {expected_max * 2}")
+            # Limit output to first 20 gaps to keep report clean
+            for i, (idx, gap) in enumerate(large_gaps.items()):
+                if i >= 20:
+                    report.add("DST/Anomaly",
+                        f"{name}: ... and {len(large_gaps) - 20} more gaps (truncated)")
+                    break
+                gap_start = df.index[idx - 1] if idx > 0 else df.index[0]
+                gap_hours = gap.total_seconds() / 3600
+                report.add("DST/Anomaly",
+                    f"{name}: WARNING gap of {gap_hours:.1f}h at {gap_start} "
+                    f"(possible DST spring-forward or data outage)")
+        else:
+            report.add("DST/Anomaly", f"{name}: No unexpected gaps ✓")
+
+    # --- Check for DST-related day-length anomalies ---
+    if df.index.tz is not None:
+        cet_index = df.index.tz_convert("Europe/Berlin")
+        daily_counts = pd.Series(1, index=cet_index).groupby(cet_index.date).count()
+
+        # Detect expected daily counts for each resolution present
+        # (e.g., 96 for 15-min, 24 for hourly)
+        time_diffs = pd.Series(df.index).diff().dropna()
+        unique_intervals = time_diffs.value_counts()
+        valid_daily_counts = set()
+        for interval, _ in unique_intervals.items():
+            hours = interval.total_seconds() / 3600
+            if hours > 0:
+                valid_daily_counts.add(round(24 / hours))
+
+        report.add("DST/Anomaly",
+            f"{name}: Detected resolutions → {sorted(valid_daily_counts)} records/day")
+
+        # A day is anomalous only if it doesn't match ANY expected count ± DST offset
+        # DST adds/removes 1 hour → ±4 records for 15-min, ±1 for hourly
+        anomalous_short = []
+        anomalous_long = []
+        for date, count in daily_counts.items():
+            is_normal = False
+            for expected in valid_daily_counts:
+                # Allow ±1 hour equivalent of records
+                records_per_hour = expected / 24
+                dst_tolerance = records_per_hour + 1  # generous tolerance
+                if abs(count - expected) <= dst_tolerance:
+                    is_normal = True
+                    break
+            if not is_normal:
+                if count < min(valid_daily_counts) - 2:
+                    anomalous_short.append((date, count))
+                elif count > max(valid_daily_counts) + 2:
+                    anomalous_long.append((date, count))
+
+        # Only report genuine DST days (±1h from expected)
+        for expected in valid_daily_counts:
+            rph = expected / 24
+            spring_count = expected - rph  # lose 1 hour
+            fall_count = expected + rph    # gain 1 hour
+            spring_days = daily_counts[daily_counts == spring_count]
+            fall_days = daily_counts[daily_counts == fall_count]
+            for date, count in spring_days.items():
+                report.add("DST/Anomaly",
+                    f"{name}: DST spring-forward {date} ({int(count)} vs expected {expected})")
+            for date, count in fall_days.items():
+                report.add("DST/Anomaly",
+                    f"{name}: DST fall-back {date} ({int(count)} vs expected {expected})")
+
+        if len(anomalous_short) == 0 and len(anomalous_long) == 0:
+            report.add("DST/Anomaly", f"{name}: No unexplained day-length anomalies ✓")
+
+    return df
+
+
+# ---------------------------------------------------------------------------
 # Step 3: Resample to Hourly
 # ---------------------------------------------------------------------------
 def resample_to_hourly(df: pd.DataFrame, name: str, report: QAReport) -> pd.DataFrame:
@@ -403,6 +507,11 @@ def main():
     logger.info("Step 2: UTC standardization ...")
     for key in data:
         data[key] = standardize_utc(data[key], key, report)
+
+    # Step 2b: DST / missing-hour anomaly detection
+    logger.info("Step 2b: DST / anomaly detection ...")
+    for key in data:
+        data[key] = detect_dst_anomalies(data[key], key, report)
 
     # Step 3: Resample to hourly
     logger.info("Step 3: Resampling to hourly ...")

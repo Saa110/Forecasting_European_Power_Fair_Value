@@ -70,6 +70,16 @@ def pinball_loss(y_true, y_pred, quantile):
     delta = y_true - y_pred
     return float(np.mean(np.where(delta >= 0, quantile * delta, (quantile - 1) * delta)))
 
+def directional_accuracy(y_true, y_pred):
+    """
+    Percentage of hours where predicted price direction (up/down vs previous hour)
+    matches the actual direction. Critical for trading — a low-MAE forecast that
+    gets directions wrong is worse than a high-MAE forecast that gets them right.
+    """
+    actual_dir = np.diff(y_true) > 0  # True = price went up
+    pred_dir = np.diff(y_pred) > 0
+    return float(np.mean(actual_dir == pred_dir) * 100)
+
 
 # ---------------------------------------------------------------------------
 # Ensemble
@@ -252,14 +262,29 @@ def main():
         "pinball_q90": round(pinball_loss(y_true, ensemble_preds["q90"].values, 0.90), 2),
         "quantile_crossings": int(((ensemble_preds["q10"] > ensemble_preds["q50"]) |
                                     (ensemble_preds["q50"] > ensemble_preds["q90"])).sum()),
+        "directional_accuracy": round(directional_accuracy(y_true, ensemble_preds["q50"].values), 2),
     }
+
+    # Compute directional accuracy for all models with q50 predictions
+    da_lgbm = round(directional_accuracy(lgbm_preds["actual"].values, lgbm_preds["q50"].values), 2)
+    da_xgb = round(directional_accuracy(xgb_preds["actual"].values, xgb_preds["q50"].values), 2)
+    da_ens = ensemble_metrics["directional_accuracy"]
 
     # Print comparison table
     logger.info("")
-    logger.info(f"  {'Model':<20} {'sMAPE':>8} {'MAE':>10}")
-    logger.info(f"  {'─'*20} {'─'*8} {'─'*10}")
+    logger.info(f"  {'Model':<20} {'sMAPE':>8} {'MAE':>10} {'Dir.Acc':>8}")
+    logger.info(f"  {'─'*20} {'─'*8} {'─'*10} {'─'*8}")
     for m in all_metrics:
-        logger.info(f"  {m['model']:<20} {m['sMAPE']:>7.2f}% {m['MAE']:>9.2f}")
+        da = ""
+        if m["model"] == "LightGBM":
+            da = f"{da_lgbm:>7.1f}%"
+        elif m["model"] == "XGBoost":
+            da = f"{da_xgb:>7.1f}%"
+        elif m["model"] == "Ensemble":
+            da = f"{da_ens:>7.1f}%"
+        else:
+            da = f"{'—':>8}"
+        logger.info(f"  {m['model']:<20} {m['sMAPE']:>7.2f}% {m['MAE']:>9.2f} {da}")
     logger.info("")
 
     # Save

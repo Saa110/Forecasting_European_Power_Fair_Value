@@ -1,0 +1,21 @@
+2026-03-15 18:02:05,300 [INFO] ============================================================
+2026-03-15 18:02:05,300 [INFO] Daily QA Health Report Generator
+2026-03-15 18:02:05,300 [INFO] ============================================================
+2026-03-15 18:02:05,302 [INFO] Collected pipeline status from log files
+2026-03-15 18:02:07,073 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-15 18:02:07,074 [INFO] Retrying request to /chat/completions in 0.494512 seconds
+2026-03-15 18:02:08,358 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-15 18:02:08,359 [INFO] Retrying request to /chat/completions in 0.892898 seconds
+2026-03-15 18:02:10,065 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-15 18:02:37,997 [INFO] ============================================================
+2026-03-15 18:02:37,997 [INFO] Daily QA Health Report Generator
+2026-03-15 18:02:37,997 [INFO] ============================================================
+2026-03-15 18:02:38,000 [INFO] Collected pipeline status from log files
+2026-03-15 18:02:39,286 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-15 18:02:39,287 [INFO] Retrying request to /chat/completions in 0.462306 seconds
+2026-03-15 18:02:40,514 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-15 18:02:40,515 [INFO] Retrying request to /chat/completions in 0.826737 seconds
+2026-03-15 18:02:42,273 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-15 18:02:42,275 [WARNING] OpenAI API call failed (Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}) — falling back to structured report
+2026-03-15 18:02:42,276 [INFO] Health report saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/daily_health_report.md
+2026-03-15 18:02:42,276 [INFO] 

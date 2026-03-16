@@ -52,14 +52,15 @@ cp .env.example .env
 
 | Step | Script | Description |
 |------|--------|-------------|
-| 1 | `python src/ingestion/entsoe_pull.py` | Pull raw data from ENTSO-E API |
-| 2 | `python src/qa/cleaner.py` | QA, UTC conversion, feature engineering |
-| 3 | `python src/models/baseline.py` | Train baseline models (Naive, Ridge) |
-| 4 | `python src/models/lgbm_model.py` | Train LightGBM with rolling window |
-| 5 | `python src/models/xgb_model.py` | Train XGBoost with rolling window |
-| 6 | `python src/models/ensemble.py` | Weighted ensemble of LightGBM + XGBoost |
-| 7 | `python src/models/curve_translator.py` | Generate base/peak views & trading signals |
-| 8 | `python src/llm/remit_parser.py` | LLM-based REMIT UMM parsing |
+| 1 | `python -m src.ingestion.data_ingest` | Pull raw data (ENTSO-E → Energy-Charts → cache fallback) |
+| 2 | `python -m src.qa.cleaner` | QA, DST-safe UTC conversion, anomaly detection, feature engineering |
+| 3 | `python -m src.models.baseline` | Train baseline models (Naive Persistence, Ridge ARX) |
+| 4 | `python -m src.models.lgbm_model` | Train LightGBM with 60-day rolling window |
+| 5 | `python -m src.models.xgb_model` | Train XGBoost with 60-day rolling window |
+| 6 | `python -m src.models.ensemble` | RMSE-weighted ensemble + model comparison |
+| 7 | `python -m src.models.curve_translator` | Generate base/peak views & trading signals |
+| 8 | `python -m src.llm.remit_parser` | LLM-based REMIT UMM parsing & signal invalidation |
+| 9 | `python -m src.llm.qa_health_report` | LLM-generated daily QA health report |
 
 ## Data Sources
 
@@ -70,7 +71,8 @@ All data is sourced from the [ENTSO-E Transparency Platform](https://transparenc
 - **Wind & Solar Generation Forecasts** (Art. 14.1.D) — supply fundamentals
 
 **Market:** DE_LU (Germany-Luxembourg) bidding zone  
-**Timeframe:** January 1 – December 31, 2024
+**Timeframe:** January 1, 2024 → yesterday (continuously updated)  
+**Resolution:** Hourly (15-min load/gen resampled to hourly)
 
 ## Models
 
@@ -83,6 +85,22 @@ All data is sourced from the [ENTSO-E Transparency Platform](https://transparenc
 | Weighted Ensemble | Improved | RMSE-weighted blend |
 
 All improved models produce probabilistic outputs (10th, 50th, 90th quantiles).
+
+## Evaluation Metrics
+
+- **sMAPE** — Symmetric Mean Absolute Percentage Error (handles near-zero prices)
+- **MAE** — Mean Absolute Error in €/MWh
+- **Directional Accuracy** — % of hours where predicted price direction (up/down) matches actual
+- **Pinball Loss** — Quantile-specific calibration (q10, q50, q90)
+- **Quantile Crossing Rate** — Ensures q10 ≤ q50 ≤ q90
+
+## QA Approach
+
+- DST-safe UTC conversion (handles CET/CEST transitions)
+- Automated anomaly detection: missing hours, duplicate timestamps, monotonicity checks
+- Negative prices preserved (real market events from renewable oversupply)
+- Outliers flagged via IQR but **never deleted** — extreme spikes are genuine
+- Source provenance tracking (`source_quality` flag: PRIMARY/FALLBACK/CACHED)
 
 ## License
 

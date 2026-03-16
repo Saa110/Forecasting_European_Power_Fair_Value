@@ -38,6 +38,7 @@
     "pinball_q10": 3.01,
     "pinball_q50": 5.88,
     "pinball_q90": 3.86,
-    "quantile_crossings": 0
+    "quantile_crossings": 0,
+    "directional_accuracy": 81.66
   }
 }

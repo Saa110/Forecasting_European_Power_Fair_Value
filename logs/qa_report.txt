@@ -5,6 +5,30 @@ QUALITY ASSURANCE REPORT
 [UTC] prices: already in UTC ✓
 [UTC] load: already in UTC ✓
 [UTC] wind_solar: already in UTC ✓
+[DST/Anomaly] prices: No duplicate timestamps ✓
+[DST/Anomaly] prices: No unexpected gaps ✓
+[DST/Anomaly] prices: Detected resolutions → [24, 96] records/day
+[DST/Anomaly] prices: DST fall-back 2025-10-26 (100 vs expected 96)
+[DST/Anomaly] prices: DST spring-forward 2024-03-31 (23 vs expected 24)
+[DST/Anomaly] prices: DST spring-forward 2025-03-30 (23 vs expected 24)
+[DST/Anomaly] prices: DST fall-back 2024-10-27 (25 vs expected 24)
+[DST/Anomaly] prices: No unexplained day-length anomalies ✓
+[DST/Anomaly] load: No duplicate timestamps ✓
+[DST/Anomaly] load: No unexpected gaps ✓
+[DST/Anomaly] load: Detected resolutions → [96] records/day
+[DST/Anomaly] load: DST spring-forward 2024-03-31 (92 vs expected 96)
+[DST/Anomaly] load: DST spring-forward 2025-03-30 (92 vs expected 96)
+[DST/Anomaly] load: DST fall-back 2024-10-27 (100 vs expected 96)
+[DST/Anomaly] load: DST fall-back 2025-10-26 (100 vs expected 96)
+[DST/Anomaly] load: No unexplained day-length anomalies ✓
+[DST/Anomaly] wind_solar: No duplicate timestamps ✓
+[DST/Anomaly] wind_solar: No unexpected gaps ✓
+[DST/Anomaly] wind_solar: Detected resolutions → [96] records/day
+[DST/Anomaly] wind_solar: DST spring-forward 2024-03-31 (92 vs expected 96)
+[DST/Anomaly] wind_solar: DST spring-forward 2025-03-30 (92 vs expected 96)
+[DST/Anomaly] wind_solar: DST fall-back 2024-10-27 (100 vs expected 96)
+[DST/Anomaly] wind_solar: DST fall-back 2025-10-26 (100 vs expected 96)
+[DST/Anomaly] wind_solar: No unexplained day-length anomalies ✓
 [Resample] prices: 15-min → hourly (31083 → 19272 rows)
 [Resample] load: 15-min → hourly (77088 → 19272 rows)
 [Resample] wind_solar: 15-min → hourly (77088 → 19272 rows)

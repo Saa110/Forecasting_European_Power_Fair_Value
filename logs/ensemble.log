@@ -175,3 +175,6 @@
 2026-03-18 21:13:14,346 [INFO]   MLP (NN)               22.50%     21.62    79.2%
 2026-03-18 21:13:14,346 [INFO]   Ensemble               16.46%     10.92    83.3%
 2026-03-18 21:13:14,346 [INFO] 
+2026-03-18 21:13:14,497 [INFO]   Saved fan chart → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/fan_chart.png
+2026-03-18 21:13:14,637 [INFO]   Saved comparison → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/model_comparison.png
+2026-03-18 21:13:14,638 [INFO] Done.

@@ -31,9 +31,9 @@ To robustly predict prices, the system implements a suite of progressively advan
 | **LightGBM** | 16.84% | 11.36 | 82.9% |
 | **XGBoost** | 16.39% | 10.88 | 82.1% |
 | **CatBoost** | 16.93% | 11.44 | 80.8% |
-| **Ensemble (Final)** | **17.33%** | **11.74** | **84.9%** |
+| **Ensemble (Final)** | **16.46%** | **10.92** | **83.3%** |
 
-*Note: While standalone gradient boosting models (like LightGBM or XGBoost) marginally outperformed the 5-model ensemble on this specific historical slice in terms of raw average error, the Weighted Ensemble is retained as the final production model to reduce variance. Note that while the Ridge ARX baseline achieved a slightly higher Directional Accuracy (85.9%), its raw MAE was unacceptably high (€16.64). The Ensemble strikes the absolute best balance between strong Directional Accuracy (84.9%) and low overall magnitude error (€11.74), making it the most optimal, reliable foundation for the subsequent Prompt Curve trading strategy. All quantile models maintained strict monotonicity (Zero quantile crossings), ensuring calibrated risk intervals.*
+*Note: The Weighted Ensemble dynamically filters out underperforming architecture (Linear OLS, MLP) and only blends the **Top 3** Gradient Boosting models (XGBoost, LightGBM, CatBoost) via inverse-RMSE weighting. While standalone XGBoost marginally outperformed it on this specific historical slice (MAE 10.88 vs 10.92), the Weighted Ensemble is retained as the final production model to reduce variance and insure against unseen market regime shifts. It maintains an excellent Directional Accuracy (83.3%), making it an optimal, reliable foundation for the subsequent Prompt Curve trading strategy. All quantile models maintained strict monotonicity (Zero quantile crossings), ensuring calibrated risk intervals.*
 
 ### Feature Ablation Study
 To quantify the value of our fundamental features, an ablation study was conducted using the tuned LightGBM model over an identical 60-day walk-forward process:

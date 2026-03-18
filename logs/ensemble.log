@@ -36,3 +36,142 @@
 2026-03-15 18:01:22,595 [INFO]   Saved fan chart → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/fan_chart.png
 2026-03-15 18:01:22,681 [INFO]   Saved comparison → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/model_comparison.png
 2026-03-15 18:01:22,681 [INFO] Done.
+2026-03-18 21:04:12,655 [INFO] ============================================================
+2026-03-18 21:04:12,655 [INFO] Weighted Ensemble & Full Model Comparison
+2026-03-18 21:04:12,655 [INFO] ============================================================
+2026-03-18 21:04:12,666 [INFO] LightGBM predictions: (1847, 4)
+2026-03-18 21:04:12,670 [INFO] XGBoost predictions: (1847, 4)
+2026-03-18 21:04:12,670 [WARNING] Could not find catboost_predictions.csv. Skipping CatBoost.
+2026-03-18 21:04:12,674 [INFO] Linear OLS predictions: (1847, 4)
+2026-03-18 21:04:12,679 [INFO] MLP (NN) predictions: (1847, 4)
+2026-03-18 21:04:12,682 [INFO] Ensemble weights:
+2026-03-18 21:04:12,682 [INFO]   LightGBM  : 0.320 (RMSE: 16.67)
+2026-03-18 21:04:12,682 [INFO]   XGBoost   : 0.340 (RMSE: 15.68)
+2026-03-18 21:04:12,682 [INFO]   Linear OLS: 0.249 (RMSE: 21.39)
+2026-03-18 21:04:12,682 [INFO]   MLP (NN)  : 0.091 (RMSE: 58.72)
+2026-03-18 21:04:12,686 [INFO] 
+2026-03-18 21:04:12,686 [INFO]   Model                   sMAPE        MAE  Dir.Acc
+2026-03-18 21:04:12,686 [INFO]   ──────────────────── ──────── ────────── ────────
+2026-03-18 21:04:12,686 [INFO]   Naive Persistence      30.92%     24.23        —
+2026-03-18 21:04:12,686 [INFO]   Ridge (ARX)            24.85%     16.64        —
+2026-03-18 21:04:12,686 [INFO]   LightGBM               16.84%     11.36    82.9%
+2026-03-18 21:04:12,686 [INFO]   XGBoost                16.39%     10.88    82.1%
+2026-03-18 21:04:12,686 [INFO]   Linear OLS             21.58%     15.48    83.5%
+2026-03-18 21:04:12,686 [INFO]   MLP (NN)               22.50%     21.62    79.2%
+2026-03-18 21:04:12,686 [INFO]   Ensemble               17.47%     12.11    84.5%
+2026-03-18 21:04:12,686 [INFO] 
+2026-03-18 21:04:12,794 [INFO]   Saved fan chart → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/fan_chart.png
+2026-03-18 21:04:12,899 [INFO]   Saved comparison → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/model_comparison.png
+2026-03-18 21:04:12,899 [INFO] Done.
+2026-03-18 21:04:52,382 [INFO] ============================================================
+2026-03-18 21:04:52,382 [INFO] Weighted Ensemble & Full Model Comparison
+2026-03-18 21:04:52,382 [INFO] ============================================================
+2026-03-18 21:04:52,391 [INFO] LightGBM predictions: (1847, 4)
+2026-03-18 21:04:52,396 [INFO] XGBoost predictions: (1847, 4)
+2026-03-18 21:04:52,400 [INFO] CatBoost predictions: (1847, 4)
+2026-03-18 21:04:52,404 [INFO] Linear OLS predictions: (1847, 4)
+2026-03-18 21:04:52,409 [INFO] MLP (NN) predictions: (1847, 4)
+2026-03-18 21:04:52,411 [INFO] Ensemble weights:
+2026-03-18 21:04:52,411 [INFO]   LightGBM  : 0.243 (RMSE: 16.67)
+2026-03-18 21:04:52,411 [INFO]   XGBoost   : 0.258 (RMSE: 15.68)
+2026-03-18 21:04:52,411 [INFO]   CatBoost  : 0.241 (RMSE: 16.76)
+2026-03-18 21:04:52,411 [INFO]   Linear OLS: 0.189 (RMSE: 21.39)
+2026-03-18 21:04:52,411 [INFO]   MLP (NN)  : 0.069 (RMSE: 58.72)
+2026-03-18 21:04:52,416 [INFO] 
+2026-03-18 21:04:52,416 [INFO]   Model                   sMAPE        MAE  Dir.Acc
+2026-03-18 21:04:52,416 [INFO]   ──────────────────── ──────── ────────── ────────
+2026-03-18 21:04:52,416 [INFO]   Naive Persistence      30.92%     24.23        —
+2026-03-18 21:04:52,416 [INFO]   Ridge (ARX)            24.85%     16.64        —
+2026-03-18 21:04:52,416 [INFO]   LightGBM               16.84%     11.36    82.9%
+2026-03-18 21:04:52,416 [INFO]   XGBoost                16.39%     10.88    82.1%
+2026-03-18 21:04:52,416 [INFO]   CatBoost               16.93%     11.44    80.8%
+2026-03-18 21:04:52,416 [INFO]   Linear OLS             21.58%     15.48    83.5%
+2026-03-18 21:04:52,416 [INFO]   MLP (NN)               22.50%     21.62    79.2%
+2026-03-18 21:04:52,416 [INFO]   Ensemble               17.33%     11.74    84.9%
+2026-03-18 21:04:52,416 [INFO] 
+2026-03-18 21:04:52,539 [INFO]   Saved fan chart → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/fan_chart.png
+2026-03-18 21:04:52,617 [INFO]   Saved comparison → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/model_comparison.png
+2026-03-18 21:04:52,617 [INFO] Done.
+2026-03-18 21:09:03,651 [INFO] ============================================================
+2026-03-18 21:09:03,651 [INFO] Weighted Ensemble & Full Model Comparison
+2026-03-18 21:09:03,651 [INFO] ============================================================
+2026-03-18 21:09:03,656 [INFO] LightGBM predictions: (1847, 4)
+2026-03-18 21:09:03,661 [INFO] XGBoost predictions: (1847, 4)
+2026-03-18 21:09:03,665 [INFO] CatBoost predictions: (1847, 4)
+2026-03-18 21:09:03,669 [INFO] Linear OLS predictions: (1847, 4)
+2026-03-18 21:09:03,673 [INFO] MLP (NN) predictions: (1847, 4)
+2026-03-18 21:09:03,674 [INFO] Ensemble weights:
+2026-03-18 21:09:03,674 [INFO]   LightGBM  : 0.243 (RMSE: 16.67)
+2026-03-18 21:09:03,674 [INFO]   XGBoost   : 0.258 (RMSE: 15.68)
+2026-03-18 21:09:03,674 [INFO]   CatBoost  : 0.241 (RMSE: 16.76)
+2026-03-18 21:09:03,674 [INFO]   Linear OLS: 0.189 (RMSE: 21.39)
+2026-03-18 21:09:03,674 [INFO]   MLP (NN)  : 0.069 (RMSE: 58.72)
+2026-03-18 21:09:03,677 [INFO] 
+2026-03-18 21:09:03,677 [INFO]   Model                   sMAPE        MAE  Dir.Acc
+2026-03-18 21:09:03,677 [INFO]   ──────────────────── ──────── ────────── ────────
+2026-03-18 21:09:03,677 [INFO]   Naive Persistence      30.92%     24.23    79.8%
+2026-03-18 21:09:03,677 [INFO]   Ridge (ARX)            24.85%     16.64    85.9%
+2026-03-18 21:09:03,677 [INFO]   LightGBM               16.84%     11.36    82.9%
+2026-03-18 21:09:03,677 [INFO]   XGBoost                16.39%     10.88    82.1%
+2026-03-18 21:09:03,677 [INFO]   CatBoost               16.93%     11.44    80.8%
+2026-03-18 21:09:03,677 [INFO]   Linear OLS             21.58%     15.48    83.5%
+2026-03-18 21:09:03,677 [INFO]   MLP (NN)               22.50%     21.62    79.2%
+2026-03-18 21:09:03,677 [INFO]   Ensemble               17.33%     11.74    84.9%
+2026-03-18 21:09:03,677 [INFO] 
+2026-03-18 21:09:03,780 [INFO]   Saved fan chart → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/fan_chart.png
+2026-03-18 21:09:03,863 [INFO]   Saved comparison → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/model_comparison.png
+2026-03-18 21:09:03,863 [INFO] Done.
+2026-03-18 21:09:47,451 [INFO] ============================================================
+2026-03-18 21:09:47,452 [INFO] Weighted Ensemble & Full Model Comparison
+2026-03-18 21:09:47,452 [INFO] ============================================================
+2026-03-18 21:09:47,458 [INFO] LightGBM predictions: (1847, 4)
+2026-03-18 21:09:47,463 [INFO] XGBoost predictions: (1847, 4)
+2026-03-18 21:09:47,467 [INFO] CatBoost predictions: (1847, 4)
+2026-03-18 21:09:47,471 [INFO] Linear OLS predictions: (1847, 4)
+2026-03-18 21:09:47,477 [INFO] MLP (NN) predictions: (1847, 4)
+2026-03-18 21:09:47,478 [INFO] Ensemble weights:
+2026-03-18 21:09:47,478 [INFO]   LightGBM  : 0.243 (RMSE: 16.67)
+2026-03-18 21:09:47,478 [INFO]   XGBoost   : 0.258 (RMSE: 15.68)
+2026-03-18 21:09:47,478 [INFO]   CatBoost  : 0.241 (RMSE: 16.76)
+2026-03-18 21:09:47,478 [INFO]   Linear OLS: 0.189 (RMSE: 21.39)
+2026-03-18 21:09:47,478 [INFO]   MLP (NN)  : 0.069 (RMSE: 58.72)
+2026-03-18 21:09:47,481 [INFO] 
+2026-03-18 21:09:47,481 [INFO]   Model                   sMAPE        MAE  Dir.Acc
+2026-03-18 21:09:47,481 [INFO]   ──────────────────── ──────── ────────── ────────
+2026-03-18 21:09:47,481 [INFO]   Naive Persistence      30.92%     24.23    79.8%
+2026-03-18 21:09:47,481 [INFO]   Ridge (ARX)            24.85%     16.64    85.9%
+2026-03-18 21:09:47,481 [INFO]   LightGBM               16.84%     11.36    82.9%
+2026-03-18 21:09:47,481 [INFO]   XGBoost                16.39%     10.88    82.1%
+2026-03-18 21:09:47,481 [INFO]   CatBoost               16.93%     11.44    80.8%
+2026-03-18 21:09:47,481 [INFO]   Linear OLS             21.58%     15.48    83.5%
+2026-03-18 21:09:47,481 [INFO]   MLP (NN)               22.50%     21.62    79.2%
+2026-03-18 21:09:47,481 [INFO]   Ensemble               17.33%     11.74    84.9%
+2026-03-18 21:09:47,481 [INFO] 
+2026-03-18 21:09:47,590 [INFO]   Saved fan chart → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/fan_chart.png
+2026-03-18 21:09:47,674 [INFO]   Saved comparison → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/model_comparison.png
+2026-03-18 21:09:47,674 [INFO] Done.
+2026-03-18 21:13:14,304 [INFO] ============================================================
+2026-03-18 21:13:14,306 [INFO] Weighted Ensemble & Full Model Comparison
+2026-03-18 21:13:14,306 [INFO] ============================================================
+2026-03-18 21:13:14,320 [INFO] LightGBM predictions: (1847, 4)
+2026-03-18 21:13:14,325 [INFO] XGBoost predictions: (1847, 4)
+2026-03-18 21:13:14,329 [INFO] CatBoost predictions: (1847, 4)
+2026-03-18 21:13:14,333 [INFO] Linear OLS predictions: (1847, 4)
+2026-03-18 21:13:14,338 [INFO] MLP (NN) predictions: (1847, 4)
+2026-03-18 21:13:14,342 [INFO] Filtering ensemble to top 3 models: ['XGBoost', 'LightGBM', 'CatBoost']
+2026-03-18 21:13:14,342 [INFO] Ensemble weights:
+2026-03-18 21:13:14,342 [INFO]   XGBoost   : 0.348 (RMSE: 15.68)
+2026-03-18 21:13:14,342 [INFO]   LightGBM  : 0.327 (RMSE: 16.67)
+2026-03-18 21:13:14,342 [INFO]   CatBoost  : 0.325 (RMSE: 16.76)
+2026-03-18 21:13:14,346 [INFO] 
+2026-03-18 21:13:14,346 [INFO]   Model                   sMAPE        MAE  Dir.Acc
+2026-03-18 21:13:14,346 [INFO]   ──────────────────── ──────── ────────── ────────
+2026-03-18 21:13:14,346 [INFO]   Naive Persistence      30.92%     24.23    79.8%
+2026-03-18 21:13:14,346 [INFO]   Ridge (ARX)            24.85%     16.64    85.9%
+2026-03-18 21:13:14,346 [INFO]   LightGBM               16.84%     11.36    82.9%
+2026-03-18 21:13:14,346 [INFO]   XGBoost                16.39%     10.88    82.1%
+2026-03-18 21:13:14,346 [INFO]   CatBoost               16.93%     11.44    80.8%
+2026-03-18 21:13:14,346 [INFO]   Linear OLS             21.58%     15.48    83.5%
+2026-03-18 21:13:14,346 [INFO]   MLP (NN)               22.50%     21.62    79.2%
+2026-03-18 21:13:14,346 [INFO]   Ensemble               16.46%     10.92    83.3%
+2026-03-18 21:13:14,346 [INFO] 

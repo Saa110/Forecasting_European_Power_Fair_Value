@@ -3,42 +3,66 @@
     {
       "model": "Naive Persistence",
       "sMAPE": 30.92,
-      "MAE": 24.23
+      "MAE": 24.23,
+      "DirAcc": 79.78
     },
     {
       "model": "Ridge (ARX)",
       "sMAPE": 24.85,
-      "MAE": 16.64
+      "MAE": 16.64,
+      "DirAcc": 85.91
     },
     {
       "model": "LightGBM",
       "sMAPE": 16.84,
-      "MAE": 11.36
+      "MAE": 11.36,
+      "DirAcc": 82.94
     },
     {
       "model": "XGBoost",
       "sMAPE": 16.39,
-      "MAE": 10.88
+      "MAE": 10.88,
+      "DirAcc": 82.12
+    },
+    {
+      "model": "CatBoost",
+      "sMAPE": 16.93,
+      "MAE": 11.44,
+      "DirAcc": 80.77
+    },
+    {
+      "model": "Linear OLS",
+      "sMAPE": 21.58,
+      "MAE": 15.48,
+      "DirAcc": 83.53
+    },
+    {
+      "model": "MLP (NN)",
+      "sMAPE": 22.5,
+      "MAE": 21.62,
+      "DirAcc": 79.25
     },
     {
       "model": "Ensemble",
-      "sMAPE": 16.4,
-      "MAE": 11.02
+      "sMAPE": 16.46,
+      "MAE": 10.92,
+      "DirAcc": 83.32
     }
   ],
   "ensemble_detail": {
     "model": "Ensemble",
     "weights": {
-      "LightGBM": 0.485,
-      "XGBoost": 0.515
+      "XGBoost": 0.348,
+      "LightGBM": 0.327,
+      "CatBoost": 0.325
     },
     "test_size": 1847,
-    "sMAPE_median": 16.4,
-    "MAE_median": 11.02,
-    "pinball_q10": 3.02,
-    "pinball_q50": 5.51,
-    "pinball_q90": 3.63,
+    "sMAPE_median": 16.46,
+    "MAE_median": 10.92,
+    "pinball_q10": 3.18,
+    "pinball_q50": 5.46,
+    "pinball_q90": 3.76,
     "quantile_crossings": 0,
-    "directional_accuracy": 82.83
+    "directional_accuracy": 83.32
   }
 }

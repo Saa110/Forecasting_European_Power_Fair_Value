@@ -34,3 +34,75 @@ renewable_penetration     1.187177  1.187177
 2026-03-14 14:29:31,312 [INFO]   Ridge (ARX)            26.44%     16.99
 2026-03-14 14:29:31,312 [INFO] ============================================================
 2026-03-14 14:29:31,319 [INFO] Predictions saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/baseline_predictions.csv
+2026-03-18 21:09:03,058 [INFO] ============================================================
+2026-03-18 21:09:03,058 [INFO] Baseline Modeling & Validation
+2026-03-18 21:09:03,058 [INFO] ============================================================
+2026-03-18 21:09:03,058 [INFO] Loading data ...
+2026-03-18 21:09:03,109 [INFO] Dataset shape: (19200, 17)
+2026-03-18 21:09:03,113 [INFO] Train: 17354 rows (2024-01-07 23:00:00+00:00 → 2025-12-31 00:00:00+00:00)
+2026-03-18 21:09:03,113 [INFO] Test:  1846 rows (2025-12-31 01:00:00+00:00 → 2026-03-17 22:00:00+00:00)
+2026-03-18 21:09:03,113 [INFO] Running Naive Persistence baseline ...
+2026-03-18 21:09:03,113 [INFO] Naive Persistence — sMAPE: 30.92% | MAE: 24.23 | DA: 79.8%
+2026-03-18 21:09:03,113 [INFO] Training Ridge Regression (ARX) baseline ...
+2026-03-18 21:09:03,124 [INFO] Top features:
+              feature  coefficient  abs_coef
+     wind_forecast_mw   -35.703104 35.703104
+    solar_forecast_mw   -35.564541 35.564541
+       actual_load_mw    31.114816 31.114816
+        price_lag_24h    13.917134 13.917134
+          net_load_mw    -9.409367  9.409367
+       price_lag_168h     6.430843  6.430843
+         load_lag_24h    -5.016742  5.016742
+renewable_penetration     3.183228  3.183228
+                month     3.063694  3.063694
+           is_weekend     2.404814  2.404814
+          day_of_week    -2.313170  2.313170
+          hour_of_day     0.412151  0.412151
+2026-03-18 21:09:03,125 [INFO] Ridge (ARX)       — sMAPE: 24.85% | MAE: 16.64 | DA: 85.9%
+2026-03-18 21:09:03,125 [INFO] Metrics saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/baseline_metrics.json
+2026-03-18 21:09:03,125 [INFO] Generating forecast vs actual plot ...
+2026-03-18 21:09:03,227 [INFO]   Saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/baseline_forecast_vs_actual.png
+2026-03-18 21:09:03,227 [INFO] ============================================================
+2026-03-18 21:09:03,227 [INFO] Baseline Results:
+2026-03-18 21:09:03,227 [INFO]   Model                   sMAPE        MAE  Dir.Acc
+2026-03-18 21:09:03,227 [INFO]   ──────────────────── ──────── ────────── ────────
+2026-03-18 21:09:03,227 [INFO]   Naive Persistence      30.92%     24.23    79.8%
+2026-03-18 21:09:03,227 [INFO]   Ridge (ARX)            24.85%     16.64    85.9%
+2026-03-18 21:09:03,227 [INFO] ============================================================
+2026-03-18 21:09:03,234 [INFO] Predictions saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/baseline_predictions.csv
+2026-03-18 21:09:46,796 [INFO] ============================================================
+2026-03-18 21:09:46,796 [INFO] Baseline Modeling & Validation
+2026-03-18 21:09:46,796 [INFO] ============================================================
+2026-03-18 21:09:46,796 [INFO] Loading data ...
+2026-03-18 21:09:46,853 [INFO] Dataset shape: (19200, 17)
+2026-03-18 21:09:46,857 [INFO] Train: 17354 rows (2024-01-07 23:00:00+00:00 → 2025-12-31 00:00:00+00:00)
+2026-03-18 21:09:46,857 [INFO] Test:  1846 rows (2025-12-31 01:00:00+00:00 → 2026-03-17 22:00:00+00:00)
+2026-03-18 21:09:46,857 [INFO] Running Naive Persistence baseline ...
+2026-03-18 21:09:46,857 [INFO] Naive Persistence — sMAPE: 30.92% | MAE: 24.23 | DA: 79.8%
+2026-03-18 21:09:46,857 [INFO] Training Ridge Regression (ARX) baseline ...
+2026-03-18 21:09:46,863 [INFO] Top features:
+              feature  coefficient  abs_coef
+     wind_forecast_mw   -35.703104 35.703104
+    solar_forecast_mw   -35.564541 35.564541
+       actual_load_mw    31.114816 31.114816
+        price_lag_24h    13.917134 13.917134
+          net_load_mw    -9.409367  9.409367
+       price_lag_168h     6.430843  6.430843
+         load_lag_24h    -5.016742  5.016742
+renewable_penetration     3.183228  3.183228
+                month     3.063694  3.063694
+           is_weekend     2.404814  2.404814
+          day_of_week    -2.313170  2.313170
+          hour_of_day     0.412151  0.412151
+2026-03-18 21:09:46,863 [INFO] Ridge (ARX)       — sMAPE: 24.85% | MAE: 16.64 | DA: 85.9%
+2026-03-18 21:09:46,863 [INFO] Metrics saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/baseline_metrics.json
+2026-03-18 21:09:46,863 [INFO] Generating forecast vs actual plot ...
+2026-03-18 21:09:46,977 [INFO]   Saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/baseline_forecast_vs_actual.png
+2026-03-18 21:09:46,977 [INFO] ============================================================
+2026-03-18 21:09:46,977 [INFO] Baseline Results:
+2026-03-18 21:09:46,977 [INFO]   Model                   sMAPE        MAE  Dir.Acc
+2026-03-18 21:09:46,977 [INFO]   ──────────────────── ──────── ────────── ────────
+2026-03-18 21:09:46,977 [INFO]   Naive Persistence      30.92%     24.23    79.8%
+2026-03-18 21:09:46,977 [INFO]   Ridge (ARX)            24.85%     16.64    85.9%
+2026-03-18 21:09:46,977 [INFO] ============================================================
+2026-03-18 21:09:46,983 [INFO] Predictions saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/baseline_predictions.csv

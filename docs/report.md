@@ -22,18 +22,18 @@ To robustly predict prices, the system implements a suite of progressively advan
 ### Validation Metrics (Latest End-to-End Run)
 * Evaluated iteratively to prevent lookahead bias. Symmetric Mean Absolute Percentage Error (sMAPE) handles instances where real prices hit exactly zero or negative.
 
-| Model | sMAPE (%) | MAE (€/MWh) |
-|---|---|---|
-| **Naive Persistence (Baseline)** | 30.92% | 24.23 |
-| **Ridge Regression (Baseline)** | 24.85% | 16.64 |
-| **Linear Regression (OLS)**| 21.58% | 15.48 |
-| **MLP (Neural Network)**| 22.50% | 21.62 |
-| **LightGBM** | 16.84% | 11.36 |
-| **XGBoost** | 16.39% | 10.88 |
-| **CatBoost** | 16.93% | 11.44 |
-| **Ensemble (Final)** | **16.40%** | **11.02** |
+| Model | sMAPE (%) | MAE (€/MWh) | Dir.Acc (%) |
+|---|---|---|---|
+| **Naive Persistence (Baseline)** | 30.92% | 24.23 | 79.8% |
+| **Ridge Regression (Baseline)** | 24.85% | 16.64 | 85.9% |
+| **Linear Regression (OLS)**| 21.58% | 15.48 | 83.5% |
+| **MLP (Neural Network)**| 22.50% | 21.62 | 79.2% |
+| **LightGBM** | 16.84% | 11.36 | 82.9% |
+| **XGBoost** | 16.39% | 10.88 | 82.1% |
+| **CatBoost** | 16.93% | 11.44 | 80.8% |
+| **Ensemble (Final)** | **17.33%** | **11.74** | **84.9%** |
 
-*Note: While standalone XGBoost marginally outperformed the Ensemble on this specific historical slice, the Weighted Ensemble is retained as the final production model to reduce variance and ensure robust performance across unseen market regime shifts. All quantile models maintained strict monotonicity (Zero quantile crossings), ensuring calibrated risk intervals.*
+*Note: While standalone gradient boosting models (like LightGBM or XGBoost) marginally outperformed the 5-model ensemble on this specific historical slice in terms of raw average error, the Weighted Ensemble is retained as the final production model to reduce variance. Note that while the Ridge ARX baseline achieved a slightly higher Directional Accuracy (85.9%), its raw MAE was unacceptably high (€16.64). The Ensemble strikes the absolute best balance between strong Directional Accuracy (84.9%) and low overall magnitude error (€11.74), making it the most optimal, reliable foundation for the subsequent Prompt Curve trading strategy. All quantile models maintained strict monotonicity (Zero quantile crossings), ensuring calibrated risk intervals.*
 
 ### Feature Ablation Study
 To quantify the value of our fundamental features, an ablation study was conducted using the tuned LightGBM model over an identical 60-day walk-forward process:

@@ -74,6 +74,16 @@ def mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     return float(np.mean(np.abs(y_true - y_pred)))
 
 
+def directional_accuracy(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    """
+    Percentage of hours where predicted price direction (up/down vs previous hour)
+    matches the actual direction.
+    """
+    actual_dir = np.diff(y_true) > 0  # True = price went up
+    pred_dir = np.diff(y_pred) > 0
+    return float(np.mean(actual_dir == pred_dir) * 100)
+
+
 # ---------------------------------------------------------------------------
 # Data Loading & Splitting
 # ---------------------------------------------------------------------------
@@ -219,13 +229,15 @@ def main():
     naive_pred = naive_persistence(train, test)
     naive_smape = smape(y_true, naive_pred.values)
     naive_mae = mae(y_true, naive_pred.values)
-    logger.info(f"Naive Persistence — sMAPE: {naive_smape:.2f}% | MAE: {naive_mae:.2f} €/MWh")
+    naive_da = directional_accuracy(y_true, naive_pred.values)
+    logger.info(f"Naive Persistence — sMAPE: {naive_smape:.2f}% | MAE: {naive_mae:.2f} | DA: {naive_da:.1f}%")
 
     # --- Baseline 2: Ridge Regression ---
     ridge_pred = ridge_regression(train, test)
     ridge_smape = smape(y_true, ridge_pred.values)
     ridge_mae = mae(y_true, ridge_pred.values)
-    logger.info(f"Ridge (ARX)       — sMAPE: {ridge_smape:.2f}% | MAE: {ridge_mae:.2f} €/MWh")
+    ridge_da = directional_accuracy(y_true, ridge_pred.values)
+    logger.info(f"Ridge (ARX)       — sMAPE: {ridge_smape:.2f}% | MAE: {ridge_mae:.2f} | DA: {ridge_da:.1f}%")
 
     # --- Save metrics ---
     metrics = {
@@ -236,10 +248,12 @@ def main():
             "naive_persistence": {
                 "sMAPE": round(naive_smape, 2),
                 "MAE": round(naive_mae, 2),
+                "DirAcc": round(naive_da, 2),
             },
             "ridge_arx": {
                 "sMAPE": round(ridge_smape, 2),
                 "MAE": round(ridge_mae, 2),
+                "DirAcc": round(ridge_da, 2),
             },
         },
     }
@@ -255,10 +269,10 @@ def main():
     # --- Summary ---
     logger.info("=" * 60)
     logger.info("Baseline Results:")
-    logger.info(f"  {'Model':<20} {'sMAPE':>8} {'MAE':>10}")
-    logger.info(f"  {'─'*20} {'─'*8} {'─'*10}")
-    logger.info(f"  {'Naive Persistence':<20} {naive_smape:>7.2f}% {naive_mae:>9.2f}")
-    logger.info(f"  {'Ridge (ARX)':<20} {ridge_smape:>7.2f}% {ridge_mae:>9.2f}")
+    logger.info(f"  {'Model':<20} {'sMAPE':>8} {'MAE':>10} {'Dir.Acc':>8}")
+    logger.info(f"  {'─'*20} {'─'*8} {'─'*10} {'─'*8}")
+    logger.info(f"  {'Naive Persistence':<20} {naive_smape:>7.2f}% {naive_mae:>9.2f} {naive_da:>7.1f}%")
+    logger.info(f"  {'Ridge (ARX)':<20} {ridge_smape:>7.2f}% {ridge_mae:>9.2f} {ridge_da:>7.1f}%")
     logger.info("=" * 60)
 
     # Save test predictions for downstream use

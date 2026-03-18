@@ -5,11 +5,13 @@
   "models": {
     "naive_persistence": {
       "sMAPE": 30.92,
-      "MAE": 24.23
+      "MAE": 24.23,
+      "DirAcc": 79.78
     },
     "ridge_arx": {
       "sMAPE": 24.85,
-      "MAE": 16.64
+      "MAE": 16.64,
+      "DirAcc": 85.91
     }
   }
 }

@@ -128,15 +128,22 @@ def compute_pnl(preds: pd.DataFrame, signal: pd.Series) -> pd.DataFrame:
         price_now = preds["actual"].iloc[t]
         price_prev = preds["actual"].iloc[t - 1]
 
-        if price_prev <= 0 or np.isnan(price_prev):
-            # Can't size a position on zero/negative prices
+        if np.isnan(price_prev) or np.isnan(price_now):
+            # Skip if data is missing
             equity[t] = equity[t - 1]
             continue
 
-        # Position size: risk only RISK_FRACTION of equity
-        # e.g. €10,000 × 10% / €100/MWh = 10 MWh
-        pos = (equity[t - 1] * RISK_FRACTION) / price_prev
-        position_mwh[t] = pos * abs(prev_signal)
+        # 1. Prevent division by near-zero or negative prices
+        safe_price_prev = max(price_prev, 10.0) 
+        
+        # 2. Calculate theoretical position based on equity
+        theoretical_pos = (equity[t - 1] * RISK_FRACTION) / safe_price_prev
+        
+        # 3. Apply a hard Liquidity Limit (e.g., max 10 MWh per hour)
+        MAX_POSITION_MWH = 10.0 
+        
+        pos = min(theoretical_pos, MAX_POSITION_MWH) * abs(prev_signal)
+        position_mwh[t] = pos
 
         # Raw PnL in € = position × price change × direction
         price_change = price_now - price_prev

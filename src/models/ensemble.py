@@ -40,11 +40,12 @@ FIG_DIR = PROJECT_ROOT / "docs" / "figures"
 for d in [LOG_DIR, FIG_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "ensemble.log"),
+        logging.FileHandler(LOG_DIR / "ensemble.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -241,7 +242,7 @@ def main():
     y_true = ensemble_preds["actual"].values
 
     # Load baseline metrics for comparison
-    with open(LOG_DIR / "baseline_metrics.json") as f:
+    with open(LOG_DIR / "baseline_metrics.json", encoding="utf-8") as f:
         baseline_metrics = json.load(f)
 
     all_metrics = [
@@ -310,7 +311,7 @@ def main():
         "comparison": all_metrics,
         "ensemble_detail": ensemble_metrics,
     }
-    with open(LOG_DIR / "model_metrics.json", "w") as f:
+    with open(LOG_DIR / "model_metrics.json", "w", encoding="utf-8") as f:
         json.dump(full_metrics, f, indent=2)
 
     # Plots

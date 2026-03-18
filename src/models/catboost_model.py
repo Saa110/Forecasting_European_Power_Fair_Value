@@ -27,10 +27,11 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 LOG_DIR = PROJECT_ROOT / "logs"
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[logging.FileHandler(LOG_DIR / "catboost.log"), logging.StreamHandler(sys.stdout)],
+    handlers=[logging.FileHandler(LOG_DIR / "catboost.log", encoding="utf-8"), logging.StreamHandler(sys.stdout)],
 )
 logger = logging.getLogger(__name__)
 
@@ -67,7 +68,7 @@ def rolling_window_train(df, split_date="2025-12-31"):
     }
     
     try:
-        with open(PROCESSED_DIR / "best_params.json") as f:
+        with open(PROCESSED_DIR / "best_params.json", encoding="utf-8") as f:
             bp = json.load(f).get("catboost", {})
             if bp:
                 params.update({"iterations": 200, "learning_rate": bp.get("learning_rate", 0.05), "depth": bp.get("depth", 6)})
@@ -131,7 +132,7 @@ def main():
 
     logger.info(f"CatBoost — sMAPE: {metrics['sMAPE_median']}% | MAE: {metrics['MAE_median']} €/MWh")
     preds.to_csv(PROCESSED_DIR / "cb_predictions.csv")
-    with open(LOG_DIR / "cb_metrics.json", "w") as f:
+    with open(LOG_DIR / "cb_metrics.json", "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
 
 if __name__ == "__main__":

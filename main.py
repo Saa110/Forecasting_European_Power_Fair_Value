@@ -28,11 +28,12 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 LOG_DIR = PROJECT_ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "pipeline.log"),
+        logging.FileHandler(LOG_DIR / "pipeline.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )

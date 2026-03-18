@@ -50,11 +50,12 @@ load_dotenv(PROJECT_ROOT / ".env")
 # ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "ingestion.log"),
+        logging.FileHandler(LOG_DIR / "ingestion.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )

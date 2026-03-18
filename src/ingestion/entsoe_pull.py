@@ -57,11 +57,12 @@ RETRY_DELAY_SECONDS = 10
 # Logging
 # ---------------------------------------------------------------------------
 LOG_DIR.mkdir(parents=True, exist_ok=True)
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "ingestion.log"),
+        logging.FileHandler(LOG_DIR / "ingestion.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )

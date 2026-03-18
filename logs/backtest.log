@@ -1,0 +1,88 @@
+2026-03-18 14:21:23,150 [INFO] ============================================================
+2026-03-18 14:21:23,150 [INFO] Strategy Backtester
+2026-03-18 14:21:23,150 [INFO] ============================================================
+2026-03-18 14:21:23,160 [INFO] Loaded ensemble predictions: (1847, 4)
+2026-03-18 14:21:23,161 [INFO]   Period: 2025-12-31 00:00:00+00:00 → 2026-03-17 22:00:00+00:00
+2026-03-18 14:21:23,161 [INFO]   Threshold: 2.0 €/MWh | Fee: 0.5 €/MWh
+2026-03-18 14:21:23,162 [INFO]   Signals — Long: 41.5% | Short: 45.4% | Flat: 13.1%
+2026-03-18 14:21:23,166 [INFO] Backtest results saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/backtest_results.json
+2026-03-18 14:21:23,166 [INFO] Generating equity curve plot ...
+2026-03-18 14:21:23,764 [INFO]   Saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/equity_curve.png
+2026-03-18 14:21:23,764 [INFO] 
+2026-03-18 14:21:23,764 [INFO]   ┌─────────────────────────────────────────┐
+2026-03-18 14:21:23,765 [INFO]   │        BACKTEST RESULTS SUMMARY          │
+2026-03-18 14:21:23,765 [INFO]   ├─────────────────────────────────────────┤
+2026-03-18 14:21:23,765 [INFO]   │  Initial Capital:  €   10,000.00     │
+2026-03-18 14:21:23,765 [INFO]   │  Final Equity:     €   20,712.05     │
+2026-03-18 14:21:23,765 [INFO]   │  Total PnL:        €   10,712.05     │
+2026-03-18 14:21:23,765 [INFO]   │  Return:                 107.12%     │
+2026-03-18 14:21:23,765 [INFO]   │  Hit Rate:                70.39%     │
+2026-03-18 14:21:23,765 [INFO]   │  Max Drawdown:     €      -96.10     │
+2026-03-18 14:21:23,765 [INFO]   │  Sharpe Ratio:             39.59     │
+2026-03-18 14:21:23,765 [INFO]   │  Trades:                     316     │
+2026-03-18 14:21:23,765 [INFO]   │  Transaction Costs: €     237.00     │
+2026-03-18 14:21:23,765 [INFO]   └─────────────────────────────────────────┘
+2026-03-18 14:21:23,765 [INFO] 
+2026-03-18 14:21:23,765 [INFO] Done.
+2026-03-18 14:28:17,936 [INFO] ============================================================
+2026-03-18 14:28:17,937 [INFO] Strategy Backtester (Capital-Aware)
+2026-03-18 14:28:17,937 [INFO] ============================================================
+2026-03-18 14:28:17,956 [INFO] Loaded ensemble predictions: (1847, 4)
+2026-03-18 14:28:17,957 [INFO]   Period: 2025-12-31 00:00:00+00:00 → 2026-03-17 22:00:00+00:00
+2026-03-18 14:28:17,957 [INFO]   Threshold: 2.0 €/MWh | Fee: 0.5 €/MWh
+2026-03-18 14:28:17,959 [INFO]   Signals — Long: 41.5% | Short: 45.4% | Flat: 13.1%
+2026-03-18 14:28:18,001 [INFO] Backtest results saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/backtest_results.json
+2026-03-18 14:28:18,001 [INFO] Generating equity curve plot ...
+2026-03-18 14:28:18,221 [INFO]   Saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/equity_curve.png
+2026-03-18 14:28:18,222 [INFO] 
+2026-03-18 14:28:18,222 [INFO]   ┌─────────────────────────────────────────────┐
+2026-03-18 14:28:18,222 [INFO]   │         BACKTEST RESULTS SUMMARY             │
+2026-03-18 14:28:18,222 [INFO]   ├─────────────────────────────────────────────┤
+2026-03-18 14:28:18,222 [INFO]   │  Initial Capital:   € 10,000.00       │
+2026-03-18 14:28:18,222 [INFO]   │  Final Equity:      €      0.00       │
+2026-03-18 14:28:18,222 [INFO]   │  Total PnL:         €-10,000.00       │
+2026-03-18 14:28:18,222 [INFO]   │  Return:               -100.00%       │
+2026-03-18 14:28:18,222 [INFO]   │  Hit Rate:                1.00%       │
+2026-03-18 14:28:18,222 [INFO]   │  Max Drawdown:         -100.00%       │
+2026-03-18 14:28:18,222 [INFO]   │  Sharpe (daily×√252):     -1.82       │
+2026-03-18 14:28:18,222 [INFO]   │  Trades:                    474       │
+2026-03-18 14:28:18,222 [INFO]   │  Txn Costs:         €  3,687.36       │
+2026-03-18 14:28:18,222 [INFO]   │  Avg Position:         2028.5 MWh       │
+2026-03-18 14:28:18,222 [INFO]   ├─────────────────────────────────────────────┤
+2026-03-18 14:28:18,222 [INFO]   │  ⚠  CAVEATS                                 │
+2026-03-18 14:28:18,222 [INFO]   │  Price autocorr (lag-1): 0.925           │
+2026-03-18 14:28:18,222 [INFO]   │  See backtest_results.json for full list     │
+2026-03-18 14:28:18,222 [INFO]   └─────────────────────────────────────────────┘
+2026-03-18 14:28:18,222 [INFO] 
+2026-03-18 14:28:18,222 [INFO] Done.
+2026-03-18 14:29:09,153 [INFO] ============================================================
+2026-03-18 14:29:09,153 [INFO] Strategy Backtester (Capital-Aware)
+2026-03-18 14:29:09,153 [INFO] ============================================================
+2026-03-18 14:29:09,161 [INFO] Loaded ensemble predictions: (1847, 4)
+2026-03-18 14:29:09,162 [INFO]   Period: 2025-12-31 00:00:00+00:00 → 2026-03-17 22:00:00+00:00
+2026-03-18 14:29:09,162 [INFO]   Threshold: 2.0 €/MWh | Fee: 0.5 €/MWh
+2026-03-18 14:29:09,163 [INFO]   Signals — Long: 41.5% | Short: 45.4% | Flat: 13.1%
+2026-03-18 14:29:09,202 [INFO] Backtest results saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/backtest_results.json
+2026-03-18 14:29:09,202 [INFO] Generating equity curve plot ...
+2026-03-18 14:29:09,426 [INFO]   Saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/equity_curve.png
+2026-03-18 14:29:09,426 [INFO] 
+2026-03-18 14:29:09,426 [INFO]   ┌─────────────────────────────────────────────┐
+2026-03-18 14:29:09,426 [INFO]   │         BACKTEST RESULTS SUMMARY             │
+2026-03-18 14:29:09,426 [INFO]   ├─────────────────────────────────────────────┤
+2026-03-18 14:29:09,426 [INFO]   │  Initial Capital:   € 10,000.00       │
+2026-03-18 14:29:09,426 [INFO]   │  Final Equity:      €101,442,518,408,586.56       │
+2026-03-18 14:29:09,426 [INFO]   │  Total PnL:         €101,442,518,398,586.56       │
+2026-03-18 14:29:09,426 [INFO]   │  Return:             1014425183985.87%       │
+2026-03-18 14:29:09,426 [INFO]   │  Hit Rate:               69.45%       │
+2026-03-18 14:29:09,426 [INFO]   │  Max Drawdown:          -23.57%       │
+2026-03-18 14:29:09,426 [INFO]   │  Sharpe (daily×√252):      3.48       │
+2026-03-18 14:29:09,426 [INFO]   │  Trades:                    474       │
+2026-03-18 14:29:09,426 [INFO]   │  Txn Costs:         €971,765,010,621.24       │
+2026-03-18 14:29:09,426 [INFO]   │  Avg Position:       5550723034.2 MWh       │
+2026-03-18 14:29:09,426 [INFO]   ├─────────────────────────────────────────────┤
+2026-03-18 14:29:09,426 [INFO]   │  ⚠  CAVEATS                                 │
+2026-03-18 14:29:09,426 [INFO]   │  Price autocorr (lag-1): 0.925           │
+2026-03-18 14:29:09,426 [INFO]   │  See backtest_results.json for full list     │
+2026-03-18 14:29:09,426 [INFO]   └─────────────────────────────────────────────┘
+2026-03-18 14:29:09,426 [INFO] 
+2026-03-18 14:29:09,426 [INFO] Done.

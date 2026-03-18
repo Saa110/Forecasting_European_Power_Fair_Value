@@ -1,0 +1,25 @@
+{
+  "initial_capital_eur": 10000.0,
+  "final_equity_eur": 101442518408586.56,
+  "total_pnl_eur": 101442518398586.56,
+  "return_pct": 1014425183985.87,
+  "hit_rate_pct": 69.45,
+  "max_drawdown_eur": -2612794773630.68,
+  "max_drawdown_pct": -23.57,
+  "sharpe_ratio_daily": 3.48,
+  "num_trades": 474,
+  "total_transaction_costs_eur": 971765010621.24,
+  "avg_position_mwh": 5550723034.2,
+  "threshold_eur_mwh": 2.0,
+  "transaction_fee_eur_mwh": 0.5,
+  "data_points": 1847,
+  "test_days": 76,
+  "price_autocorr_lag1": 0.925,
+  "caveats": [
+    "Lag-1 price autocorrelation ~0.92 \u2014 directional accuracy is partially an artifact of price persistence, not pure model alpha.",
+    "No bid-ask spread / slippage beyond the flat \u20ac0.50/MWh fee.",
+    "Single market (DE), 77-day window \u2014 results are not statistically robust.",
+    "Walk-forward predictions, but hyperparameters may be overfit to this period.",
+    "Sharpe Ratio computed from daily PnL \u00d7 \u221a252 (industry convention)."
+  ]
+}

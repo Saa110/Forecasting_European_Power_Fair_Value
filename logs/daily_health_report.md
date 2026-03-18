@@ -1,25 +1,28 @@
 # Daily Pipeline Health Report
-**Generated:** 2026-03-15T18:02:37.997928
+**Generated:** 2026-03-18T14:08:15.676208
 **Mode:** Automated (rule-based fallback — set OPENAI_API_KEY for LLM reports)
 
 ## 1. Data Quality Summary
 - ✅ No duplicate timestamps detected
+- ✅ No unexpected gaps in time series
 - [DST/Anomaly] prices: No duplicate timestamps ✓
-- [DST/Anomaly] prices: WARNING gap of 1.0h at 2023-12-31 23:00:00+00:00 (possible DST spring-forward or data outage)
-- [DST/Anomaly] prices: WARNING gap of 1.0h at 2024-01-01 00:00:00+00:00 (possible DST spring-forward or data outage)
+- [DST/Anomaly] prices: No unexpected gaps ✓
+- [DST/Anomaly] prices: Detected resolutions → [12, 24, 48, 96] records/day
 
 ## 2. Model Performance
-- **Naive Persistence**: sMAPE=28.58%, MAE=22.72 €/MWh
-- **Ridge (ARX)**: sMAPE=26.44%, MAE=16.99 €/MWh
-- **LightGBM**: sMAPE=17.86%, MAE=11.97 €/MWh
-- **XGBoost**: sMAPE=17.52%, MAE=11.77 €/MWh
-- **Ensemble**: sMAPE=17.71%, MAE=11.77 €/MWh
+- **Naive Persistence**: sMAPE=30.92%, MAE=24.23 €/MWh
+- **Ridge (ARX)**: sMAPE=24.85%, MAE=16.64 €/MWh
+- **LightGBM**: sMAPE=16.84%, MAE=11.36 €/MWh
+- **XGBoost**: sMAPE=16.39%, MAE=10.88 €/MWh
+- **Ensemble**: sMAPE=16.4%, MAE=11.02 €/MWh
 - ✅ Zero quantile crossings — probabilistic outputs well-calibrated
 
 ## 3. Trading Signal Summary
-- **2026-W09**: Mild Buy (RP=-3.5 €/MWh, Conviction: Half position)
-- **2026-W10**: Strong Sell (Overvalued) (RP=+13.4 €/MWh, Conviction: Full position)
-- **2026-W11**: Mild Buy (RP=-2.1 €/MWh, Conviction: Half position)
+- **2026-W10**: Strong Sell (Overvalued) (RP=+12.5 €/MWh, Conviction: Full position)
+- **2026-W11**: Mild Sell (RP=+0.4 €/MWh, Conviction: Half position)
+  - ⚠️ Risk premium < 2 €/MWh — insufficient edge after costs
+- **2026-W12**: Mild Buy (RP=-1.6 €/MWh, Conviction: Half position)
+  - ⚠️ Risk premium < 2 €/MWh — insufficient edge after costs
 
 ## 4. Action Items
 - 📋 REMIT parser using rule-based fallback — set OPENAI_API_KEY for LLM classification

@@ -53,6 +53,24 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# ---------------------------------------------------------------------------
+# Usage Pattern: Mock vs Production
+# ---------------------------------------------------------------------------
+# Currently this module runs against MOCK_UMMS for demonstration and testing:
+#
+#   for umm in MOCK_UMMS:
+#       result = parse_umm_with_llm(umm)
+#
+# In a production deployment, you would swap the data source to a live feed:
+#
+#   for umm in fetch_remit_umms_from_entsoe():   # ENTSO-E Transparency Platform
+#       result = parse_umm_with_llm(umm)          # or RSS / commercial feed
+#       if should_invalidate(result["parsed"]):
+#           override_trading_signal(current_week)
+#
+# The parsing + invalidation logic (parse_umm_with_llm, should_invalidate)
+# is data-source-agnostic — only the ingestion layer changes.
+# ---------------------------------------------------------------------------
 
 # ---------------------------------------------------------------------------
 # Mock REMIT UMMs
@@ -136,12 +154,16 @@ Return STRICT JSON only."""
 def parse_umm_with_llm(umm: dict) -> dict:
     """
     Send a REMIT UMM to OpenAI for classification.
-    Falls back to rule-based parsing if API key is not set.
+    Falls back to rule-based parsing if API key is not set or API call fails.
     """
     api_key = os.getenv("OPENAI_API_KEY")
 
     if api_key and api_key != "your_openai_api_key_here":
-        return _parse_with_openai(umm, api_key)
+        try:
+            return _parse_with_openai(umm, api_key)
+        except Exception as e:
+            logger.warning(f"  OpenAI API call failed ({e}) — falling back to rule-based parser")
+            return _parse_rule_based(umm)
     else:
         logger.warning("  OpenAI API key not found — using rule-based fallback")
         return _parse_rule_based(umm)

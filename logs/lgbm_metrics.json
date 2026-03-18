@@ -1,11 +1,11 @@
 {
   "model": "LightGBM",
   "window_days": 60,
-  "test_size": 1751,
-  "sMAPE_median": 17.86,
-  "MAE_median": 11.97,
-  "pinball_q10": 2.95,
-  "pinball_q50": 5.98,
-  "pinball_q90": 3.83,
+  "test_size": 1847,
+  "sMAPE_median": 16.84,
+  "MAE_median": 11.36,
+  "pinball_q10": 2.92,
+  "pinball_q50": 5.68,
+  "pinball_q90": 3.64,
   "quantile_crossings": 0
 }

@@ -1,11 +1,11 @@
 {
   "model": "XGBoost",
   "window_days": 60,
-  "test_size": 1751,
-  "sMAPE_median": 17.52,
-  "MAE_median": 11.77,
-  "pinball_q10": 3.22,
-  "pinball_q50": 5.88,
-  "pinball_q90": 4.08,
+  "test_size": 1847,
+  "sMAPE_median": 16.39,
+  "MAE_median": 10.88,
+  "pinball_q10": 3.25,
+  "pinball_q50": 5.44,
+  "pinball_q90": 3.78,
   "quantile_crossings": 0
 }

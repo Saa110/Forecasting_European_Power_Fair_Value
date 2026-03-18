@@ -7,15 +7,15 @@ QUALITY ASSURANCE REPORT
 [UTC] wind_solar: already in UTC ✓
 [DST/Anomaly] prices: No duplicate timestamps ✓
 [DST/Anomaly] prices: No unexpected gaps ✓
-[DST/Anomaly] prices: Detected resolutions → [24, 96] records/day
+[DST/Anomaly] prices: Detected resolutions → [12, 24, 48, 96] records/day
 [DST/Anomaly] prices: DST fall-back 2025-10-26 (100 vs expected 96)
 [DST/Anomaly] prices: DST spring-forward 2024-03-31 (23 vs expected 24)
+[DST/Anomaly] prices: DST spring-forward 2024-12-31 (23 vs expected 24)
 [DST/Anomaly] prices: DST spring-forward 2025-03-30 (23 vs expected 24)
 [DST/Anomaly] prices: DST fall-back 2024-10-27 (25 vs expected 24)
-[DST/Anomaly] prices: No unexplained day-length anomalies ✓
 [DST/Anomaly] load: No duplicate timestamps ✓
 [DST/Anomaly] load: No unexpected gaps ✓
-[DST/Anomaly] load: Detected resolutions → [96] records/day
+[DST/Anomaly] load: Detected resolutions → [48, 96] records/day
 [DST/Anomaly] load: DST spring-forward 2024-03-31 (92 vs expected 96)
 [DST/Anomaly] load: DST spring-forward 2025-03-30 (92 vs expected 96)
 [DST/Anomaly] load: DST fall-back 2024-10-27 (100 vs expected 96)
@@ -23,30 +23,30 @@ QUALITY ASSURANCE REPORT
 [DST/Anomaly] load: No unexplained day-length anomalies ✓
 [DST/Anomaly] wind_solar: No duplicate timestamps ✓
 [DST/Anomaly] wind_solar: No unexpected gaps ✓
-[DST/Anomaly] wind_solar: Detected resolutions → [96] records/day
+[DST/Anomaly] wind_solar: Detected resolutions → [48, 96] records/day
 [DST/Anomaly] wind_solar: DST spring-forward 2024-03-31 (92 vs expected 96)
 [DST/Anomaly] wind_solar: DST spring-forward 2025-03-30 (92 vs expected 96)
 [DST/Anomaly] wind_solar: DST fall-back 2024-10-27 (100 vs expected 96)
 [DST/Anomaly] wind_solar: DST fall-back 2025-10-26 (100 vs expected 96)
 [DST/Anomaly] wind_solar: No unexplained day-length anomalies ✓
-[Resample] prices: 15-min → hourly (31083 → 19272 rows)
-[Resample] load: 15-min → hourly (77088 → 19272 rows)
-[Resample] wind_solar: 15-min → hourly (77088 → 19272 rows)
-[Merge] Merged shape: (19272, 5)
-[Merge] Date range: 2023-12-31 23:00:00+00:00 → 2026-03-13 22:00:00+00:00
-[Merge] Inner join retained 19272 rows
+[Resample] prices: 15-min → hourly (31466 → 19369 rows)
+[Resample] load: 15-min → hourly (77470 → 19368 rows)
+[Resample] wind_solar: 15-min → hourly (77470 → 19368 rows)
+[Merge] Merged shape: (19368, 5)
+[Merge] Date range: 2023-12-31 23:00:00+00:00 → 2026-03-17 22:00:00+00:00
+[Merge] Inner join retained 19368 rows
 [NaN-Before] Missing values per column:
-price_eur_mwh        0
+price_eur_mwh        1
 actual_load_mw       0
-wind_forecast_mw     0
 solar_forecast_mw    0
+wind_forecast_mw     0
 [NaN-After] Missing values after imputation:
 price_eur_mwh        0
 actual_load_mw       0
-wind_forecast_mw     0
 solar_forecast_mw    0
-[Outliers] Price IQR bounds: [-74.90, 248.24] €/MWh
-[Outliers] Price outliers flagged: 182 (0.94%)
+wind_forecast_mw     0
+[Outliers] Price IQR bounds: [-74.96, 248.55] €/MWh
+[Outliers] Price outliers flagged: 181 (0.93%)
 [Outliers] Negative prices: 1057
 [Outliers] Price range: [-250.32, 936.28] €/MWh
 [Boundary] Negative load values: 0
@@ -55,5 +55,5 @@ solar_forecast_mw    0
 [Boundary] Index strictly monotonic: True
 [Features] Added 11 features: ['hour_of_day', 'day_of_week', 'month', 'is_weekend', 'price_lag_24h', 'price_lag_168h', 'load_lag_24h', 'renewable_penetration', 'price_rolling_mean_24h', 'price_rolling_std_24h', 'net_load_mw']
 [Features] Dropped 168 rows due to lag NaNs (first 7 days)
-[Features] Final dataset shape: (19104, 17)
-[Output] Saved: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/model_ready.csv | Shape: (19104, 17)
+[Features] Final dataset shape: (19200, 17)
+[Output] Saved: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/model_ready.csv | Shape: (19200, 17)

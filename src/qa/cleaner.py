@@ -89,7 +89,11 @@ class QAReport:
 # Step 1: Load Raw Data
 # ---------------------------------------------------------------------------
 def load_raw_data() -> dict:
-    """Load all raw CSVs into DataFrames."""
+    """Load all raw CSVs into DataFrames.
+
+    Handles ENTSO-E's mixed UTC-offset timestamps (CET +01:00 / CEST +02:00)
+    by forcing conversion to UTC on load via pd.to_datetime(..., utc=True).
+    """
     logger.info("Step 1: Loading raw data ...")
 
     files = {
@@ -101,8 +105,11 @@ def load_raw_data() -> dict:
     data = {}
     for key, filename in files.items():
         filepath = RAW_DIR / filename
-        df = pd.read_csv(filepath, index_col="timestamp", parse_dates=True)
-        logger.info(f"  Loaded {key}: {df.shape}")
+        df = pd.read_csv(filepath)
+        # Force UTC conversion — handles mixed offsets from ENTSO-E
+        df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
+        df = df.set_index("timestamp")
+        logger.info(f"  Loaded {key}: {df.shape} | index tz: {df.index.tz}")
         data[key] = df
 
     return data
@@ -113,7 +120,12 @@ def load_raw_data() -> dict:
 # ---------------------------------------------------------------------------
 def standardize_utc(df: pd.DataFrame, name: str, report: QAReport) -> pd.DataFrame:
     """Ensure index is timezone-aware UTC. Handles DST safely."""
-    if df.index.tz is None:
+    # If index isn't a DatetimeIndex yet (e.g. mixed-offset strings),
+    # force-convert via pd.to_datetime with utc=True
+    if not isinstance(df.index, pd.DatetimeIndex):
+        df.index = pd.to_datetime(df.index, utc=True)
+        report.add("UTC", f"{name}: converted non-datetime index to UTC DatetimeIndex")
+    elif df.index.tz is None:
         df.index = df.index.tz_localize("UTC")
         report.add("UTC", f"{name}: localized naive timestamps to UTC")
     elif str(df.index.tz) != "UTC":

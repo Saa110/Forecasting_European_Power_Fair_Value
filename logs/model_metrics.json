@@ -2,43 +2,43 @@
   "comparison": [
     {
       "model": "Naive Persistence",
-      "sMAPE": 28.58,
-      "MAE": 22.72
+      "sMAPE": 30.92,
+      "MAE": 24.23
     },
     {
       "model": "Ridge (ARX)",
-      "sMAPE": 26.44,
-      "MAE": 16.99
+      "sMAPE": 24.85,
+      "MAE": 16.64
     },
     {
       "model": "LightGBM",
-      "sMAPE": 17.86,
-      "MAE": 11.97
+      "sMAPE": 16.84,
+      "MAE": 11.36
     },
     {
       "model": "XGBoost",
-      "sMAPE": 17.52,
-      "MAE": 11.77
+      "sMAPE": 16.39,
+      "MAE": 10.88
     },
     {
       "model": "Ensemble",
-      "sMAPE": 17.71,
-      "MAE": 11.77
+      "sMAPE": 16.4,
+      "MAE": 11.02
     }
   ],
   "ensemble_detail": {
     "model": "Ensemble",
     "weights": {
-      "LightGBM": 0.498,
-      "XGBoost": 0.502
+      "LightGBM": 0.485,
+      "XGBoost": 0.515
     },
-    "test_size": 1751,
-    "sMAPE_median": 17.71,
-    "MAE_median": 11.77,
-    "pinball_q10": 3.01,
-    "pinball_q50": 5.88,
-    "pinball_q90": 3.86,
+    "test_size": 1847,
+    "sMAPE_median": 16.4,
+    "MAE_median": 11.02,
+    "pinball_q10": 3.02,
+    "pinball_q50": 5.51,
+    "pinball_q90": 3.63,
     "quantile_crossings": 0,
-    "directional_accuracy": 81.66
+    "directional_accuracy": 82.83
   }
 }

@@ -1,0 +1,532 @@
+2026-03-18 13:34:00,984 [INFO] ============================================================
+2026-03-18 13:34:00,984 [INFO]   PIPELINE ORCHESTRATOR
+2026-03-18 13:34:00,984 [INFO] ============================================================
+2026-03-18 13:34:00,984 [INFO]   Steps to run (9):
+2026-03-18 13:34:00,984 [INFO]     1. [ingest] Data Ingestion
+2026-03-18 13:34:00,984 [INFO]     2. [clean] QA & Feature Engineering
+2026-03-18 13:34:00,984 [INFO]     3. [baseline] Baseline Models (Naive + Ridge)
+2026-03-18 13:34:00,984 [INFO]     4. [lgbm] LightGBM (60-day rolling)
+2026-03-18 13:34:00,984 [INFO]     5. [xgb] XGBoost (60-day rolling)
+2026-03-18 13:34:00,984 [INFO]     6. [ensemble] Weighted Ensemble
+2026-03-18 13:34:00,984 [INFO]     7. [curve] Curve Translation & Trading Signals
+2026-03-18 13:34:00,984 [INFO]     8. [remit] REMIT UMM Parser (LLM)
+2026-03-18 13:34:00,984 [INFO]     9. [health] QA Health Report (LLM)
+2026-03-18 13:34:00,984 [INFO] 
+2026-03-18 13:34:00,984 [INFO]   --dry-run: nothing will be executed.
+2026-03-18 13:34:13,626 [INFO] ============================================================
+2026-03-18 13:34:13,626 [INFO]   PIPELINE ORCHESTRATOR
+2026-03-18 13:34:13,626 [INFO] ============================================================
+2026-03-18 13:34:13,626 [INFO]   Steps to run (3):
+2026-03-18 13:34:13,626 [INFO]     1. [lgbm] LightGBM (60-day rolling)
+2026-03-18 13:34:13,626 [INFO]     2. [xgb] XGBoost (60-day rolling)
+2026-03-18 13:34:13,626 [INFO]     3. [ensemble] Weighted Ensemble
+2026-03-18 13:34:13,626 [INFO] 
+2026-03-18 13:34:13,626 [INFO]   --dry-run: nothing will be executed.
+2026-03-18 13:34:23,331 [INFO] ============================================================
+2026-03-18 13:34:23,331 [INFO]   PIPELINE ORCHESTRATOR
+2026-03-18 13:34:23,331 [INFO] ============================================================
+2026-03-18 13:34:23,331 [INFO]   Steps to run (4):
+2026-03-18 13:34:23,331 [INFO]     1. [baseline] Baseline Models (Naive + Ridge)
+2026-03-18 13:34:23,331 [INFO]     2. [lgbm] LightGBM (60-day rolling)
+2026-03-18 13:34:23,331 [INFO]     3. [xgb] XGBoost (60-day rolling)
+2026-03-18 13:34:23,331 [INFO]     4. [ensemble] Weighted Ensemble
+2026-03-18 13:34:23,331 [INFO] 
+2026-03-18 13:34:23,331 [INFO]   --dry-run: nothing will be executed.
+2026-03-18 13:34:25,949 [INFO] ============================================================
+2026-03-18 13:34:25,949 [INFO]   PIPELINE ORCHESTRATOR
+2026-03-18 13:34:25,949 [INFO] ============================================================
+2026-03-18 13:34:25,950 [INFO]   Steps to run (3):
+2026-03-18 13:34:25,950 [INFO]     1. [curve] Curve Translation & Trading Signals
+2026-03-18 13:34:25,950 [INFO]     2. [remit] REMIT UMM Parser (LLM)
+2026-03-18 13:34:25,950 [INFO]     3. [health] QA Health Report (LLM)
+2026-03-18 13:34:25,950 [INFO] 
+2026-03-18 13:34:25,950 [INFO]   --dry-run: nothing will be executed.
+2026-03-18 13:41:53,995 [INFO] ============================================================
+2026-03-18 13:41:53,995 [INFO]   PIPELINE ORCHESTRATOR
+2026-03-18 13:41:53,995 [INFO] ============================================================
+2026-03-18 13:41:53,995 [INFO]   Steps to run (2):
+2026-03-18 13:41:53,995 [INFO]     1. [ingest] Data Ingestion
+2026-03-18 13:41:53,995 [INFO]     2. [clean] QA & Feature Engineering
+2026-03-18 13:41:53,995 [INFO] 
+2026-03-18 13:41:53,996 [INFO] 
+2026-03-18 13:41:53,996 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:41:53,996 [INFO]   Step 1/2: Data Ingestion
+2026-03-18 13:41:53,996 [INFO]   Module: src.ingestion.data_ingest
+2026-03-18 13:41:53,996 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:41:54,599 [INFO] ============================================================
+2026-03-18 13:41:54,599 [INFO] Data Ingestion Orchestrator
+2026-03-18 13:41:54,599 [INFO] Market: DE_LU | Range: 2024-01-01 → 2026-03-17
+2026-03-18 13:41:54,599 [INFO] ============================================================
+2026-03-18 13:41:54,599 [INFO] [Tier 1] Attempting ENTSO-E API (primary source) ...
+2026-03-18 13:41:54,710 [INFO] Pulling Day-Ahead Prices ...
+2026-03-18 13:42:15,930 [INFO] Pulling Actual Total Load ...
+2026-03-18 13:42:41,702 [INFO] Pulling Day-Ahead Wind & Solar Generation Forecasts ...
+2026-03-18 13:43:22,933 [INFO]   Saved 31466 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/day_ahead_prices.csv
+2026-03-18 13:43:23,156 [INFO]   Saved 77470 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/actual_total_load.csv
+2026-03-18 13:43:23,423 [INFO]   Saved 77470 rows → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/raw/wind_solar_forecast.csv
+2026-03-18 13:43:23,532 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/day_ahead_prices.csv
+2026-03-18 13:43:23,755 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/actual_total_load.csv
+2026-03-18 13:43:23,994 [INFO]   [Cache] Updated cache: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/cache/wind_solar_forecast.csv
+2026-03-18 13:43:23,994 [INFO] [Tier 1] ✅ ENTSO-E pull successful.
+2026-03-18 13:43:23,994 [INFO] ============================================================
+2026-03-18 13:43:23,994 [INFO] Ingestion Summary:
+2026-03-18 13:43:23,994 [INFO]   prices      : 31,466 rows | source: PRIMARY
+2026-03-18 13:43:23,994 [INFO]   load        : 77,470 rows | source: PRIMARY
+2026-03-18 13:43:23,994 [INFO]   wind_solar  : 77,470 rows | source: PRIMARY
+2026-03-18 13:43:23,994 [INFO] ============================================================
+2026-03-18 13:43:23,995 [INFO]   ✅ ingest completed in 90.0s
+2026-03-18 13:43:23,995 [INFO] 
+2026-03-18 13:43:23,995 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:43:23,995 [INFO]   Step 2/2: QA & Feature Engineering
+2026-03-18 13:43:23,995 [INFO]   Module: src.qa.cleaner
+2026-03-18 13:43:23,995 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:43:24,256 [INFO] ============================================================
+2026-03-18 13:43:24,256 [INFO] QA & Feature Engineering Pipeline
+2026-03-18 13:43:24,256 [INFO] ============================================================
+2026-03-18 13:43:24,256 [INFO] Step 1: Loading raw data ...
+2026-03-18 13:43:24,313 [INFO]   Loaded prices: (31466, 2)
+2026-03-18 13:43:24,440 [INFO]   Loaded load: (77470, 2)
+2026-03-18 13:43:24,567 [INFO]   Loaded wind_solar: (77470, 3)
+2026-03-18 13:43:24,567 [INFO] Step 2: UTC standardization ...
+2026-03-18 13:43:24,567 [ERROR]   ❌ clean FAILED after 0.6s: 'Index' object has no attribute 'tz'
+2026-03-18 13:43:24,568 [ERROR] 
+  Pipeline aborted at step 'clean'.
+2026-03-18 13:43:24,568 [ERROR]   Fix the issue and re-run with: python main.py --from clean
+2026-03-18 13:43:24,568 [INFO] 
+2026-03-18 13:43:24,568 [INFO] ============================================================
+2026-03-18 13:43:24,568 [INFO]   PIPELINE SUMMARY
+2026-03-18 13:43:24,569 [INFO] ============================================================
+2026-03-18 13:43:24,569 [INFO]     ✅ ingest
+2026-03-18 13:43:24,569 [INFO]     ❌ clean
+2026-03-18 13:43:24,569 [INFO] 
+  Total time: 90.6s
+2026-03-18 13:43:24,569 [INFO]   ⚠️  Failed steps: clean
+2026-03-18 13:45:31,108 [INFO] ============================================================
+2026-03-18 13:45:31,109 [INFO]   PIPELINE ORCHESTRATOR
+2026-03-18 13:45:31,109 [INFO] ============================================================
+2026-03-18 13:45:31,109 [INFO]   Steps to run (1):
+2026-03-18 13:45:31,109 [INFO]     1. [clean] QA & Feature Engineering
+2026-03-18 13:45:31,109 [INFO] 
+2026-03-18 13:45:31,109 [INFO] 
+2026-03-18 13:45:31,109 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:45:31,109 [INFO]   Step 1/1: QA & Feature Engineering
+2026-03-18 13:45:31,109 [INFO]   Module: src.qa.cleaner
+2026-03-18 13:45:31,109 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:45:31,651 [INFO] ============================================================
+2026-03-18 13:45:31,651 [INFO] QA & Feature Engineering Pipeline
+2026-03-18 13:45:31,651 [INFO] ============================================================
+2026-03-18 13:45:31,651 [INFO] Step 1: Loading raw data ...
+2026-03-18 13:45:31,739 [INFO]   Loaded prices: (31466, 2) | index tz: UTC
+2026-03-18 13:45:31,978 [INFO]   Loaded load: (77470, 2) | index tz: UTC
+2026-03-18 13:45:32,109 [INFO]   Loaded wind_solar: (77470, 3) | index tz: UTC
+2026-03-18 13:45:32,109 [INFO] Step 2: UTC standardization ...
+2026-03-18 13:45:32,110 [INFO]   QA: prices: already in UTC ✓
+2026-03-18 13:45:32,110 [INFO]   QA: load: already in UTC ✓
+2026-03-18 13:45:32,110 [INFO]   QA: wind_solar: already in UTC ✓
+2026-03-18 13:45:32,110 [INFO] Step 2b: DST / anomaly detection ...
+2026-03-18 13:45:32,111 [INFO]   QA: prices: No duplicate timestamps ✓
+2026-03-18 13:45:32,114 [INFO]   QA: prices: No unexpected gaps ✓
+2026-03-18 13:45:32,126 [INFO]   QA: prices: Detected resolutions → [12, 24, 48, 96] records/day
+2026-03-18 13:45:32,126 [INFO]   QA: prices: DST fall-back 2025-10-26 (100 vs expected 96)
+2026-03-18 13:45:32,126 [INFO]   QA: prices: DST spring-forward 2024-03-31 (23 vs expected 24)
+2026-03-18 13:45:32,126 [INFO]   QA: prices: DST spring-forward 2024-12-31 (23 vs expected 24)
+2026-03-18 13:45:32,126 [INFO]   QA: prices: DST spring-forward 2025-03-30 (23 vs expected 24)
+2026-03-18 13:45:32,126 [INFO]   QA: prices: DST fall-back 2024-10-27 (25 vs expected 24)
+2026-03-18 13:45:32,127 [INFO]   QA: load: No duplicate timestamps ✓
+2026-03-18 13:45:32,128 [INFO]   QA: load: No unexpected gaps ✓
+2026-03-18 13:45:32,150 [INFO]   QA: load: Detected resolutions → [48, 96] records/day
+2026-03-18 13:45:32,151 [INFO]   QA: load: DST spring-forward 2024-03-31 (92 vs expected 96)
+2026-03-18 13:45:32,151 [INFO]   QA: load: DST spring-forward 2025-03-30 (92 vs expected 96)
+2026-03-18 13:45:32,151 [INFO]   QA: load: DST fall-back 2024-10-27 (100 vs expected 96)
+2026-03-18 13:45:32,151 [INFO]   QA: load: DST fall-back 2025-10-26 (100 vs expected 96)
+2026-03-18 13:45:32,151 [INFO]   QA: load: No unexplained day-length anomalies ✓
+2026-03-18 13:45:32,151 [INFO]   QA: wind_solar: No duplicate timestamps ✓
+2026-03-18 13:45:32,152 [INFO]   QA: wind_solar: No unexpected gaps ✓
+2026-03-18 13:45:32,175 [INFO]   QA: wind_solar: Detected resolutions → [48, 96] records/day
+2026-03-18 13:45:32,175 [INFO]   QA: wind_solar: DST spring-forward 2024-03-31 (92 vs expected 96)
+2026-03-18 13:45:32,175 [INFO]   QA: wind_solar: DST spring-forward 2025-03-30 (92 vs expected 96)
+2026-03-18 13:45:32,175 [INFO]   QA: wind_solar: DST fall-back 2024-10-27 (100 vs expected 96)
+2026-03-18 13:45:32,175 [INFO]   QA: wind_solar: DST fall-back 2025-10-26 (100 vs expected 96)
+2026-03-18 13:45:32,175 [INFO]   QA: wind_solar: No unexplained day-length anomalies ✓
+2026-03-18 13:45:32,175 [INFO] Step 3: Resampling to hourly ...
+2026-03-18 13:45:32,185 [INFO]   QA: prices: 15-min → hourly (31466 → 19369 rows)
+2026-03-18 13:45:32,190 [INFO]   QA: load: 15-min → hourly (77470 → 19368 rows)
+2026-03-18 13:45:32,196 [INFO]   QA: wind_solar: 15-min → hourly (77470 → 19368 rows)
+2026-03-18 13:45:32,196 [INFO] Step 4: Merging datasets ...
+2026-03-18 13:45:32,198 [INFO]   QA: Merged shape: (19368, 5)
+2026-03-18 13:45:32,198 [INFO]   QA: Date range: 2023-12-31 23:00:00+00:00 → 2026-03-17 22:00:00+00:00
+2026-03-18 13:45:32,198 [INFO]   QA: Inner join retained 19368 rows
+2026-03-18 13:45:32,198 [INFO] Step 5: Handling missing values ...
+2026-03-18 13:45:32,199 [INFO]   QA: Missing values per column:
+price_eur_mwh        1
+actual_load_mw       0
+solar_forecast_mw    0
+wind_forecast_mw     0
+2026-03-18 13:45:32,214 [INFO]   QA: Missing values after imputation:
+price_eur_mwh        0
+actual_load_mw       0
+solar_forecast_mw    0
+wind_forecast_mw     0
+2026-03-18 13:45:32,214 [INFO] Step 6: Flagging outliers ...
+2026-03-18 13:45:32,216 [INFO]   QA: Price IQR bounds: [-74.96, 248.55] €/MWh
+2026-03-18 13:45:32,216 [INFO]   QA: Price outliers flagged: 181 (0.93%)
+2026-03-18 13:45:32,216 [INFO]   QA: Negative prices: 1057
+2026-03-18 13:45:32,216 [INFO]   QA: Price range: [-250.32, 936.28] €/MWh
+2026-03-18 13:45:32,216 [INFO] Step 7: Boundary checks ...
+2026-03-18 13:45:32,216 [INFO]   QA: Negative load values: 0
+2026-03-18 13:45:32,217 [INFO]   QA: Negative wind_forecast_mw: 0
+2026-03-18 13:45:32,217 [INFO]   QA: Negative solar_forecast_mw: 0
+2026-03-18 13:45:32,217 [INFO]   QA: Index strictly monotonic: True
+2026-03-18 13:45:32,217 [INFO] Step 8: Feature engineering ...
+2026-03-18 13:45:32,225 [INFO]   QA: Added 11 features: ['hour_of_day', 'day_of_week', 'month', 'is_weekend', 'price_lag_24h', 'price_lag_168h', 'load_lag_24h', 'renewable_penetration', 'price_rolling_mean_24h', 'price_rolling_std_24h', 'net_load_mw']
+2026-03-18 13:45:32,226 [INFO]   QA: Dropped 168 rows due to lag NaNs (first 7 days)
+2026-03-18 13:45:32,226 [INFO]   QA: Final dataset shape: (19200, 17)
+2026-03-18 13:45:32,226 [INFO] Step 9: Generating figures ...
+2026-03-18 13:45:32,837 [INFO]   Saved figure → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/price_timeseries.png
+2026-03-18 13:45:32,921 [INFO]   Saved figure → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/price_distribution.png
+2026-03-18 13:45:33,033 [INFO] Final dataset saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/model_ready.csv
+2026-03-18 13:45:33,033 [INFO]   QA: Saved: /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/model_ready.csv | Shape: (19200, 17)
+2026-03-18 13:45:33,034 [INFO] QA report saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/qa_report.txt
+2026-03-18 13:45:33,034 [INFO] ============================================================
+2026-03-18 13:45:33,034 [INFO] Pipeline Summary:
+2026-03-18 13:45:33,034 [INFO]   Final shape:    (19200, 17)
+2026-03-18 13:45:33,034 [INFO]   Date range:     2024-01-07 23:00:00+00:00 → 2026-03-17 22:00:00+00:00
+2026-03-18 13:45:33,034 [INFO]   Columns:        ['price_eur_mwh', 'actual_load_mw', 'solar_forecast_mw', 'wind_forecast_mw', 'source_quality', 'price_outlier', 'hour_of_day', 'day_of_week', 'month', 'is_weekend', 'price_lag_24h', 'price_lag_168h', 'load_lag_24h', 'renewable_penetration', 'price_rolling_mean_24h', 'price_rolling_std_24h', 'net_load_mw']
+2026-03-18 13:45:33,035 [INFO]   NaN remaining:  1
+2026-03-18 13:45:33,035 [INFO] ============================================================
+2026-03-18 13:45:33,035 [INFO]   ✅ clean completed in 1.9s
+2026-03-18 13:45:33,035 [INFO] 
+2026-03-18 13:45:33,035 [INFO] ============================================================
+2026-03-18 13:45:33,035 [INFO]   PIPELINE SUMMARY
+2026-03-18 13:45:33,035 [INFO] ============================================================
+2026-03-18 13:45:33,035 [INFO]     ✅ clean
+2026-03-18 13:45:33,035 [INFO] 
+  Total time: 1.9s
+2026-03-18 13:45:33,035 [INFO]   All steps completed successfully.
+2026-03-18 13:45:33,035 [INFO] ============================================================
+2026-03-18 13:48:19,566 [INFO] ============================================================
+2026-03-18 13:48:19,566 [INFO]   PIPELINE ORCHESTRATOR
+2026-03-18 13:48:19,566 [INFO] ============================================================
+2026-03-18 13:48:19,566 [INFO]   Steps to run (7):
+2026-03-18 13:48:19,566 [INFO]     1. [baseline] Baseline Models (Naive + Ridge)
+2026-03-18 13:48:19,566 [INFO]     2. [lgbm] LightGBM (60-day rolling)
+2026-03-18 13:48:19,566 [INFO]     3. [xgb] XGBoost (60-day rolling)
+2026-03-18 13:48:19,566 [INFO]     4. [ensemble] Weighted Ensemble
+2026-03-18 13:48:19,566 [INFO]     5. [curve] Curve Translation & Trading Signals
+2026-03-18 13:48:19,566 [INFO]     6. [remit] REMIT UMM Parser (LLM)
+2026-03-18 13:48:19,566 [INFO]     7. [health] QA Health Report (LLM)
+2026-03-18 13:48:19,566 [INFO] 
+2026-03-18 13:48:19,566 [INFO] 
+2026-03-18 13:48:19,567 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:48:19,567 [INFO]   Step 1/7: Baseline Models (Naive + Ridge)
+2026-03-18 13:48:19,567 [INFO]   Module: src.models.baseline
+2026-03-18 13:48:19,567 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:48:21,259 [INFO] ============================================================
+2026-03-18 13:48:21,259 [INFO] Baseline Modeling & Validation
+2026-03-18 13:48:21,259 [INFO] ============================================================
+2026-03-18 13:48:21,259 [INFO] Loading data ...
+2026-03-18 13:48:21,311 [INFO] Dataset shape: (19200, 17)
+2026-03-18 13:48:21,315 [INFO] Train: 17354 rows (2024-01-07 23:00:00+00:00 → 2025-12-31 00:00:00+00:00)
+2026-03-18 13:48:21,315 [INFO] Test:  1846 rows (2025-12-31 01:00:00+00:00 → 2026-03-17 22:00:00+00:00)
+2026-03-18 13:48:21,315 [INFO] Running Naive Persistence baseline ...
+2026-03-18 13:48:21,315 [INFO] Naive Persistence — sMAPE: 30.92% | MAE: 24.23 €/MWh
+2026-03-18 13:48:21,315 [INFO] Training Ridge Regression (ARX) baseline ...
+2026-03-18 13:48:21,324 [INFO] Top features:
+              feature  coefficient  abs_coef
+     wind_forecast_mw   -35.703104 35.703104
+    solar_forecast_mw   -35.564541 35.564541
+       actual_load_mw    31.114816 31.114816
+        price_lag_24h    13.917134 13.917134
+          net_load_mw    -9.409367  9.409367
+       price_lag_168h     6.430843  6.430843
+         load_lag_24h    -5.016742  5.016742
+renewable_penetration     3.183228  3.183228
+                month     3.063694  3.063694
+           is_weekend     2.404814  2.404814
+          day_of_week    -2.313170  2.313170
+          hour_of_day     0.412151  0.412151
+2026-03-18 13:48:21,324 [INFO] Ridge (ARX)       — sMAPE: 24.85% | MAE: 16.64 €/MWh
+2026-03-18 13:48:21,325 [INFO] Metrics saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/baseline_metrics.json
+2026-03-18 13:48:21,325 [INFO] Generating forecast vs actual plot ...
+2026-03-18 13:48:21,421 [INFO]   Saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/baseline_forecast_vs_actual.png
+2026-03-18 13:48:21,421 [INFO] ============================================================
+2026-03-18 13:48:21,421 [INFO] Baseline Results:
+2026-03-18 13:48:21,421 [INFO]   Model                   sMAPE        MAE
+2026-03-18 13:48:21,421 [INFO]   ──────────────────── ──────── ──────────
+2026-03-18 13:48:21,421 [INFO]   Naive Persistence      30.92%     24.23
+2026-03-18 13:48:21,421 [INFO]   Ridge (ARX)            24.85%     16.64
+2026-03-18 13:48:21,421 [INFO] ============================================================
+2026-03-18 13:48:21,427 [INFO] Predictions saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/baseline_predictions.csv
+2026-03-18 13:48:21,427 [INFO]   ✅ baseline completed in 1.9s
+2026-03-18 13:48:21,427 [INFO] 
+2026-03-18 13:48:21,427 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:48:21,427 [INFO]   Step 2/7: LightGBM (60-day rolling)
+2026-03-18 13:48:21,427 [INFO]   Module: src.models.lgbm_model
+2026-03-18 13:48:21,427 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:48:21,458 [INFO] ============================================================
+2026-03-18 13:48:21,458 [INFO] LightGBM — 60-Day Rolling Window Quantile Regression
+2026-03-18 13:48:21,458 [INFO] ============================================================
+2026-03-18 13:48:21,501 [INFO] Data shape: (19200, 17)
+2026-03-18 13:48:21,503 [INFO] Test dates: 77 days
+2026-03-18 13:48:21,503 [INFO] Rolling window: 60 days
+2026-03-18 13:48:21,503 [INFO] Quantiles: [0.1, 0.5, 0.9]
+2026-03-18 13:48:21,503 [INFO] Models to train: 231 (77 days × 3 quantiles)
+2026-03-18 13:48:22,627 [INFO]   [  1.3%] Day 1/77 (2025-12-31) | 1.1s/day | ETA: 85s
+2026-03-18 13:48:27,082 [INFO]   [  6.5%] Day 5/77 (2026-01-04) | 1.1s/day | ETA: 80s
+2026-03-18 13:48:32,682 [INFO]   [ 13.0%] Day 10/77 (2026-01-09) | 1.1s/day | ETA: 75s
+2026-03-18 13:48:38,927 [INFO]   [ 19.5%] Day 15/77 (2026-01-14) | 1.3s/day | ETA: 72s
+2026-03-18 13:48:44,911 [INFO]   [ 26.0%] Day 20/77 (2026-01-19) | 1.2s/day | ETA: 67s
+2026-03-18 13:48:50,366 [INFO]   [ 32.5%] Day 25/77 (2026-01-24) | 1.0s/day | ETA: 60s
+2026-03-18 13:48:55,709 [INFO]   [ 39.0%] Day 30/77 (2026-01-29) | 1.1s/day | ETA: 54s
+2026-03-18 13:49:01,077 [INFO]   [ 45.5%] Day 35/77 (2026-02-03) | 1.1s/day | ETA: 47s
+2026-03-18 13:49:06,615 [INFO]   [ 51.9%] Day 40/77 (2026-02-08) | 1.1s/day | ETA: 42s
+2026-03-18 13:49:12,518 [INFO]   [ 58.4%] Day 45/77 (2026-02-13) | 1.2s/day | ETA: 36s
+2026-03-18 13:49:18,442 [INFO]   [ 64.9%] Day 50/77 (2026-02-18) | 1.2s/day | ETA: 31s
+2026-03-18 13:49:23,473 [INFO]   [ 71.4%] Day 55/77 (2026-02-23) | 0.9s/day | ETA: 25s
+2026-03-18 13:49:28,432 [INFO]   [ 77.9%] Day 60/77 (2026-02-28) | 1.0s/day | ETA: 19s
+2026-03-18 13:49:33,408 [INFO]   [ 84.4%] Day 65/77 (2026-03-05) | 1.0s/day | ETA: 13s
+2026-03-18 13:49:38,574 [INFO]   [ 90.9%] Day 70/77 (2026-03-10) | 1.1s/day | ETA: 8s
+2026-03-18 13:49:44,346 [INFO]   [ 97.4%] Day 75/77 (2026-03-15) | 1.1s/day | ETA: 2s
+2026-03-18 13:49:46,648 [INFO]   [100.0%] Day 77/77 (2026-03-17) | 1.2s/day | ETA: 0s
+2026-03-18 13:49:46,651 [INFO] LightGBM — sMAPE: 16.84% | MAE: 11.36 €/MWh
+2026-03-18 13:49:46,651 [INFO]   Pinball: q10=2.92, q50=5.68, q90=3.64
+2026-03-18 13:49:46,652 [INFO]   Quantile crossings: 0
+2026-03-18 13:49:46,661 [INFO] Predictions saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/lgbm_predictions.csv
+2026-03-18 13:49:46,661 [INFO] Done.
+2026-03-18 13:49:46,661 [INFO]   ✅ lgbm completed in 85.2s
+2026-03-18 13:49:46,661 [INFO] 
+2026-03-18 13:49:46,661 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:49:46,661 [INFO]   Step 3/7: XGBoost (60-day rolling)
+2026-03-18 13:49:46,661 [INFO]   Module: src.models.xgb_model
+2026-03-18 13:49:46,661 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:49:46,694 [INFO] ============================================================
+2026-03-18 13:49:46,694 [INFO] XGBoost — 60-Day Rolling Window Quantile Regression
+2026-03-18 13:49:46,694 [INFO] ============================================================
+2026-03-18 13:49:46,744 [INFO] Data shape: (19200, 17)
+2026-03-18 13:49:46,745 [INFO] Test dates: 77 days
+2026-03-18 13:49:46,745 [INFO] Rolling window: 60 days
+2026-03-18 13:49:46,745 [INFO] Models to train: 231 (77 days × 3 quantiles)
+2026-03-18 13:49:47,561 [INFO]   [  1.3%] Day 1/77 (2025-12-31) | 0.8s/day | ETA: 62s
+2026-03-18 13:49:51,302 [INFO]   [  6.5%] Day 5/77 (2026-01-04) | 0.9s/day | ETA: 66s
+2026-03-18 13:49:56,116 [INFO]   [ 13.0%] Day 10/77 (2026-01-09) | 1.0s/day | ETA: 63s
+2026-03-18 13:50:01,300 [INFO]   [ 19.5%] Day 15/77 (2026-01-14) | 1.1s/day | ETA: 60s
+2026-03-18 13:50:06,967 [INFO]   [ 26.0%] Day 20/77 (2026-01-19) | 1.2s/day | ETA: 58s
+2026-03-18 13:50:13,165 [INFO]   [ 32.5%] Day 25/77 (2026-01-24) | 1.2s/day | ETA: 55s
+2026-03-18 13:50:19,464 [INFO]   [ 39.0%] Day 30/77 (2026-01-29) | 1.3s/day | ETA: 51s
+2026-03-18 13:50:26,784 [INFO]   [ 45.5%] Day 35/77 (2026-02-03) | 1.7s/day | ETA: 48s
+2026-03-18 13:50:34,939 [INFO]   [ 51.9%] Day 40/77 (2026-02-08) | 1.7s/day | ETA: 45s
+2026-03-18 13:50:43,304 [INFO]   [ 58.4%] Day 45/77 (2026-02-13) | 1.9s/day | ETA: 40s
+2026-03-18 13:50:52,312 [INFO]   [ 64.9%] Day 50/77 (2026-02-18) | 1.5s/day | ETA: 35s
+2026-03-18 13:50:59,581 [INFO]   [ 71.4%] Day 55/77 (2026-02-23) | 1.5s/day | ETA: 29s
+2026-03-18 13:51:07,677 [INFO]   [ 77.9%] Day 60/77 (2026-02-28) | 2.2s/day | ETA: 23s
+2026-03-18 13:51:16,251 [INFO]   [ 84.4%] Day 65/77 (2026-03-05) | 1.6s/day | ETA: 17s
+2026-03-18 13:51:23,921 [INFO]   [ 90.9%] Day 70/77 (2026-03-10) | 1.7s/day | ETA: 10s
+2026-03-18 13:51:31,635 [INFO]   [ 97.4%] Day 75/77 (2026-03-15) | 1.4s/day | ETA: 3s
+2026-03-18 13:51:34,502 [INFO]   [100.0%] Day 77/77 (2026-03-17) | 1.4s/day | ETA: 0s
+2026-03-18 13:51:34,508 [INFO] XGBoost — sMAPE: 16.39% | MAE: 10.88 €/MWh
+2026-03-18 13:51:34,509 [INFO]   Pinball: q10=3.25, q50=5.44, q90=3.78
+2026-03-18 13:51:34,522 [INFO] Predictions saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/data/processed/xgb_predictions.csv
+2026-03-18 13:51:34,522 [INFO] Done.
+2026-03-18 13:51:34,523 [INFO]   ✅ xgb completed in 107.9s
+2026-03-18 13:51:34,523 [INFO] 
+2026-03-18 13:51:34,523 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:51:34,523 [INFO]   Step 4/7: Weighted Ensemble
+2026-03-18 13:51:34,523 [INFO]   Module: src.models.ensemble
+2026-03-18 13:51:34,523 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:51:34,525 [INFO] ============================================================
+2026-03-18 13:51:34,525 [INFO] Weighted Ensemble & Full Model Comparison
+2026-03-18 13:51:34,525 [INFO] ============================================================
+2026-03-18 13:51:34,543 [INFO] LightGBM predictions: (1847, 4)
+2026-03-18 13:51:34,544 [INFO] XGBoost predictions:  (1847, 4)
+2026-03-18 13:51:34,545 [INFO] Ensemble weights — LightGBM: 0.485, XGBoost: 0.515
+2026-03-18 13:51:34,545 [INFO]   (RMSE LightGBM: 16.67, XGBoost: 15.68)
+2026-03-18 13:51:34,548 [INFO] 
+2026-03-18 13:51:34,548 [INFO]   Model                   sMAPE        MAE  Dir.Acc
+2026-03-18 13:51:34,548 [INFO]   ──────────────────── ──────── ────────── ────────
+2026-03-18 13:51:34,548 [INFO]   Naive Persistence      30.92%     24.23        —
+2026-03-18 13:51:34,548 [INFO]   Ridge (ARX)            24.85%     16.64        —
+2026-03-18 13:51:34,548 [INFO]   LightGBM               16.84%     11.36    82.9%
+2026-03-18 13:51:34,549 [INFO]   XGBoost                16.39%     10.88    82.1%
+2026-03-18 13:51:34,549 [INFO]   Ensemble               16.40%     11.02    82.8%
+2026-03-18 13:51:34,549 [INFO] 
+2026-03-18 13:51:34,755 [INFO]   Saved fan chart → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/fan_chart.png
+2026-03-18 13:51:34,915 [INFO]   Saved comparison → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/model_comparison.png
+2026-03-18 13:51:34,915 [INFO] Done.
+2026-03-18 13:51:34,915 [INFO]   ✅ ensemble completed in 0.4s
+2026-03-18 13:51:34,915 [INFO] 
+2026-03-18 13:51:34,915 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:51:34,915 [INFO]   Step 5/7: Curve Translation & Trading Signals
+2026-03-18 13:51:34,915 [INFO]   Module: src.models.curve_translator
+2026-03-18 13:51:34,915 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:51:34,917 [INFO] ============================================================
+2026-03-18 13:51:34,917 [INFO] Prompt Curve Translation & Trading Signals
+2026-03-18 13:51:34,917 [INFO] ============================================================
+2026-03-18 13:51:34,926 [INFO] Loaded ensemble predictions: (1847, 4)
+2026-03-18 13:51:34,926 [INFO] Aggregating hourly forecasts to curve views ...
+2026-03-18 13:51:34,942 [INFO]   Aggregated into 13 weekly curve views
+2026-03-18 13:51:34,942 [INFO] Generating trading signals ...
+2026-03-18 13:51:34,944 [INFO]   Generated signals for 13 weeks
+2026-03-18 13:51:34,945 [INFO] Curve translation saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/curve_translation.json
+2026-03-18 13:51:34,945 [INFO] Generating curve view plot ...
+2026-03-18 13:51:35,177 [INFO]   Saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/docs/figures/curve_view.png
+2026-03-18 13:51:35,178 [INFO] 
+2026-03-18 13:51:35,178 [INFO]   Week          Base FV  Forward      RP Signal                    Conviction     
+2026-03-18 13:51:35,178 [INFO]   ──────────── ──────── ──────── ─────── ───────────────────────── ───────────────
+2026-03-18 13:51:35,178 [INFO]   2025-W01        74.0    86.8   12.8 Strong Sell (Overvalued)  Full position  
+2026-03-18 13:51:35,178 [INFO]   2026-W01        56.1    63.3    7.2 Mild Sell                 Half position  
+2026-03-18 13:51:35,178 [INFO]   2026-W02       110.2   109.8   -0.5 Mild Buy                  Half position  
+2026-03-18 13:51:35,178 [INFO]   2026-W03       105.0   112.9    7.9 Strong Sell (Overvalued)  Full position  
+2026-03-18 13:51:35,178 [INFO]   2026-W04       117.0   120.8    3.7 Mild Sell                 Half position  
+2026-03-18 13:51:35,178 [INFO]   2026-W05       118.4   129.9   11.6 Strong Sell (Overvalued)  Full position  
+2026-03-18 13:51:35,178 [INFO]   2026-W06       109.8   106.5   -3.2 Mild Buy                  Half position  
+2026-03-18 13:51:35,178 [INFO]   2026-W07       112.1   107.7   -4.4 Mild Buy                  Half position  
+2026-03-18 13:51:35,178 [INFO]   2026-W08        91.8    85.7   -6.2 Mild Buy                  Half position  
+2026-03-18 13:51:35,178 [INFO]   2026-W09        81.7    77.6   -4.1 Mild Buy                  Half position  
+2026-03-18 13:51:35,178 [INFO]   2026-W10       104.7   117.2   12.5 Strong Sell (Overvalued)  Full position  
+2026-03-18 13:51:35,178 [INFO]   2026-W11        99.2    99.6    0.4 Mild Sell                 Half position  
+2026-03-18 13:51:35,178 [INFO]   2026-W12       101.1    99.6   -1.6 Mild Buy                  Half position  
+2026-03-18 13:51:35,178 [INFO] 
+2026-03-18 13:51:35,178 [INFO] Done.
+2026-03-18 13:51:35,178 [INFO]   ✅ curve completed in 0.3s
+2026-03-18 13:51:35,178 [INFO] 
+2026-03-18 13:51:35,178 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:51:35,178 [INFO]   Step 6/7: REMIT UMM Parser (LLM)
+2026-03-18 13:51:35,178 [INFO]   Module: src.llm.remit_parser
+2026-03-18 13:51:35,179 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 13:51:35,186 [INFO] ============================================================
+2026-03-18 13:51:35,186 [INFO] REMIT UMM Parser — LLM Integration
+2026-03-18 13:51:35,186 [INFO] ============================================================
+2026-03-18 13:51:35,186 [INFO] 
+Processing: UMM-2026-001 — Unplanned Outage — Jänschwalde Unit B (900 MW)
+2026-03-18 13:51:37,329 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 13:51:37,330 [INFO] Retrying request to /chat/completions in 0.443251 seconds
+2026-03-18 13:51:38,767 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 13:51:38,767 [INFO] Retrying request to /chat/completions in 0.855656 seconds
+2026-03-18 13:51:40,553 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 13:51:40,556 [ERROR]   ❌ remit FAILED after 5.4s: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2026-03-18 13:51:40,557 [ERROR] 
+  Pipeline aborted at step 'remit'.
+2026-03-18 13:51:40,557 [ERROR]   Fix the issue and re-run with: python main.py --from remit
+2026-03-18 13:51:40,557 [INFO] 
+2026-03-18 13:51:40,557 [INFO] ============================================================
+2026-03-18 13:51:40,557 [INFO]   PIPELINE SUMMARY
+2026-03-18 13:51:40,557 [INFO] ============================================================
+2026-03-18 13:51:40,557 [INFO]     ✅ baseline
+2026-03-18 13:51:40,557 [INFO]     ✅ lgbm
+2026-03-18 13:51:40,557 [INFO]     ✅ xgb
+2026-03-18 13:51:40,557 [INFO]     ✅ ensemble
+2026-03-18 13:51:40,557 [INFO]     ✅ curve
+2026-03-18 13:51:40,557 [INFO]     ❌ remit
+2026-03-18 13:51:40,557 [INFO] 
+  Total time: 201.0s
+2026-03-18 13:51:40,557 [INFO]   ⚠️  Failed steps: remit
+2026-03-18 14:08:05,476 [INFO] ============================================================
+2026-03-18 14:08:05,476 [INFO]   PIPELINE ORCHESTRATOR
+2026-03-18 14:08:05,476 [INFO] ============================================================
+2026-03-18 14:08:05,476 [INFO]   Steps to run (2):
+2026-03-18 14:08:05,476 [INFO]     1. [remit] REMIT UMM Parser (LLM)
+2026-03-18 14:08:05,476 [INFO]     2. [health] QA Health Report (LLM)
+2026-03-18 14:08:05,476 [INFO] 
+2026-03-18 14:08:05,477 [INFO] 
+2026-03-18 14:08:05,477 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 14:08:05,477 [INFO]   Step 1/2: REMIT UMM Parser (LLM)
+2026-03-18 14:08:05,477 [INFO]   Module: src.llm.remit_parser
+2026-03-18 14:08:05,477 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 14:08:05,497 [INFO] ============================================================
+2026-03-18 14:08:05,497 [INFO] REMIT UMM Parser — LLM Integration
+2026-03-18 14:08:05,497 [INFO] ============================================================
+2026-03-18 14:08:05,497 [INFO] 
+Processing: UMM-2026-001 — Unplanned Outage — Jänschwalde Unit B (900 MW)
+2026-03-18 14:08:06,937 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:06,938 [INFO] Retrying request to /chat/completions in 0.459537 seconds
+2026-03-18 14:08:08,245 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:08,246 [INFO] Retrying request to /chat/completions in 0.978163 seconds
+2026-03-18 14:08:09,679 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:09,682 [WARNING]   OpenAI API call failed (Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}) — falling back to rule-based parser
+2026-03-18 14:08:09,683 [INFO]   Source:      rule_based
+2026-03-18 14:08:09,683 [INFO]   Relevance:   1
+2026-03-18 14:08:09,683 [INFO]   Root Cause:  Generation Outage
+2026-03-18 14:08:09,683 [INFO]   Reason:      Unplanned outage with significant capacity loss detected.
+2026-03-18 14:08:09,683 [INFO]   Invalidate:  ⚠️  YES
+2026-03-18 14:08:09,683 [INFO] 
+Processing: UMM-2026-002 — Planned Maintenance — Isar 2 Valve Replacement (50 MW derate)
+2026-03-18 14:08:10,702 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:10,703 [INFO] Retrying request to /chat/completions in 0.459395 seconds
+2026-03-18 14:08:11,899 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:11,900 [INFO] Retrying request to /chat/completions in 0.805487 seconds
+2026-03-18 14:08:13,035 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:13,035 [WARNING]   OpenAI API call failed (Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}) — falling back to rule-based parser
+2026-03-18 14:08:13,035 [INFO]   Source:      rule_based
+2026-03-18 14:08:13,035 [INFO]   Relevance:   3
+2026-03-18 14:08:13,036 [INFO]   Root Cause:  Planned Maintenance
+2026-03-18 14:08:13,036 [INFO]   Reason:      Routine planned maintenance with minimal market impact.
+2026-03-18 14:08:13,036 [INFO]   Invalidate:  ✅ NO
+2026-03-18 14:08:13,036 [INFO] 
+Processing: UMM-2026-003 — Extreme Weather Alert — Dunkelflaute Expected
+2026-03-18 14:08:13,477 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:13,479 [INFO] Retrying request to /chat/completions in 0.397861 seconds
+2026-03-18 14:08:14,144 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:14,144 [INFO] Retrying request to /chat/completions in 0.793140 seconds
+2026-03-18 14:08:15,668 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:15,669 [WARNING]   OpenAI API call failed (Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}) — falling back to rule-based parser
+2026-03-18 14:08:15,669 [INFO]   Source:      rule_based
+2026-03-18 14:08:15,669 [INFO]   Relevance:   1
+2026-03-18 14:08:15,669 [INFO]   Root Cause:  Extreme Weather
+2026-03-18 14:08:15,669 [INFO]   Reason:      Extreme weather event with high potential for supply shortfall.
+2026-03-18 14:08:15,669 [INFO]   Invalidate:  ✅ NO
+2026-03-18 14:08:15,671 [INFO] 
+LLM outputs logged → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/llm_outputs.log
+2026-03-18 14:08:15,672 [INFO] 
+2026-03-18 14:08:15,672 [INFO] ============================================================
+2026-03-18 14:08:15,672 [INFO] Summary:
+2026-03-18 14:08:15,672 [INFO]   UMM ID            Relevance Root Cause           Invalidate
+2026-03-18 14:08:15,672 [INFO]   ──────────────── ────────── ──────────────────── ──────────
+2026-03-18 14:08:15,672 [INFO]   UMM-2026-001              1 Generation Outage        YES ⚠️
+2026-03-18 14:08:15,672 [INFO]   UMM-2026-002              3 Planned Maintenance        NO ✅
+2026-03-18 14:08:15,672 [INFO]   UMM-2026-003              1 Extreme Weather            NO ✅
+2026-03-18 14:08:15,672 [INFO] ============================================================
+2026-03-18 14:08:15,672 [INFO]   ✅ remit completed in 10.2s
+2026-03-18 14:08:15,672 [INFO] 
+2026-03-18 14:08:15,672 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 14:08:15,672 [INFO]   Step 2/2: QA Health Report (LLM)
+2026-03-18 14:08:15,672 [INFO]   Module: src.llm.qa_health_report
+2026-03-18 14:08:15,672 [INFO] ────────────────────────────────────────────────────────────
+2026-03-18 14:08:15,675 [INFO] ============================================================
+2026-03-18 14:08:15,676 [INFO] Daily QA Health Report Generator
+2026-03-18 14:08:15,676 [INFO] ============================================================
+2026-03-18 14:08:15,678 [INFO] Collected pipeline status from log files
+2026-03-18 14:08:16,130 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:16,131 [INFO] Retrying request to /chat/completions in 0.498968 seconds
+2026-03-18 14:08:16,948 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:16,948 [INFO] Retrying request to /chat/completions in 0.846922 seconds
+2026-03-18 14:08:18,064 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-03-18 14:08:18,065 [WARNING] OpenAI API call failed (Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}) — falling back to structured report
+2026-03-18 14:08:18,066 [INFO] Health report saved → /Users/syedasad/GIthub/Forecasting_European_Power_Fair_Value/logs/daily_health_report.md
+2026-03-18 14:08:18,067 [INFO] 
+2026-03-18 14:08:18,067 [INFO]   ✅ health completed in 2.4s
+2026-03-18 14:08:18,067 [INFO] 
+2026-03-18 14:08:18,067 [INFO] ============================================================
+2026-03-18 14:08:18,067 [INFO]   PIPELINE SUMMARY
+2026-03-18 14:08:18,067 [INFO] ============================================================
+2026-03-18 14:08:18,067 [INFO]     ✅ remit
+2026-03-18 14:08:18,067 [INFO]     ✅ health
+2026-03-18 14:08:18,067 [INFO] 
+  Total time: 12.6s
+2026-03-18 14:08:18,067 [INFO]   All steps completed successfully.
+2026-03-18 14:08:18,067 [INFO] ============================================================
+2026-03-18 14:21:59,338 [INFO] ============================================================
+2026-03-18 14:21:59,338 [INFO]   PIPELINE ORCHESTRATOR
+2026-03-18 14:21:59,338 [INFO] ============================================================
+2026-03-18 14:21:59,338 [INFO]   Steps to run (10):
+2026-03-18 14:21:59,338 [INFO]     1. [ingest] Data Ingestion
+2026-03-18 14:21:59,338 [INFO]     2. [clean] QA & Feature Engineering
+2026-03-18 14:21:59,338 [INFO]     3. [baseline] Baseline Models (Naive + Ridge)
+2026-03-18 14:21:59,338 [INFO]     4. [lgbm] LightGBM (60-day rolling)
+2026-03-18 14:21:59,338 [INFO]     5. [xgb] XGBoost (60-day rolling)
+2026-03-18 14:21:59,338 [INFO]     6. [ensemble] Weighted Ensemble
+2026-03-18 14:21:59,338 [INFO]     7. [curve] Curve Translation & Trading Signals
+2026-03-18 14:21:59,338 [INFO]     8. [backtest] Strategy Backtester
+2026-03-18 14:21:59,338 [INFO]     9. [remit] REMIT UMM Parser (LLM)
+2026-03-18 14:21:59,338 [INFO]     10. [health] QA Health Report (LLM)
+2026-03-18 14:21:59,338 [INFO] 
+2026-03-18 14:21:59,338 [INFO]   --dry-run: nothing will be executed.

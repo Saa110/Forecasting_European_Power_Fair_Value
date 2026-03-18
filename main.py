@@ -85,12 +85,7 @@ STEPS = [
         "module": "src.models.curve_translator",
         "groups": ["trading", "all"],
     },
-    {
-        "name": "backtest",
-        "label": "Strategy Backtester",
-        "module": "src.models.strategy_backtester",
-        "groups": ["trading", "all"],
-    },
+
     {
         "name": "remit",
         "label": "REMIT UMM Parser (LLM)",

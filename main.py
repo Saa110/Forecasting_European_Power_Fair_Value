@@ -74,6 +74,24 @@ STEPS = [
         "groups": ["models", "all"],
     },
     {
+        "name": "catboost",
+        "label": "CatBoost (60-day rolling)",
+        "module": "src.models.catboost_model",
+        "groups": ["models", "all"],
+    },
+    {
+        "name": "linear",
+        "label": "Linear Regression (OLS)",
+        "module": "src.models.linear_model",
+        "groups": ["models", "all"],
+    },
+    {
+        "name": "mlp",
+        "label": "MLP (Neural Network)",
+        "module": "src.models.mlp_model",
+        "groups": ["models", "all"],
+    },
+    {
         "name": "ensemble",
         "label": "Weighted Ensemble",
         "module": "src.models.ensemble",
@@ -97,6 +115,18 @@ STEPS = [
         "label": "QA Health Report (LLM)",
         "module": "src.llm.qa_health_report",
         "groups": ["llm", "all"],
+    },
+    {
+        "name": "tune",
+        "label": "Hyperparameter Tuning",
+        "module": "src.models.tune_hyperparams",
+        "groups": ["tuning"],
+    },
+    {
+        "name": "ablation",
+        "label": "Feature Ablation Study",
+        "module": "src.models.ablation_study",
+        "groups": ["ablation"],
     },
 ]
 
@@ -183,7 +213,9 @@ Group names:  {', '.join(GROUP_NAMES)}
 Examples:
   python main.py                          Run full pipeline (steps 1-9)
   python main.py --steps ingest clean     Run only ingestion + QA
-  python main.py --group models           Run baseline, lgbm, xgb, ensemble
+  python main.py --group models           Run baseline, lgbm, xgb, catboost, linear, mlp, ensemble
+  python main.py --group tuning           Run hyperparameter tuning
+  python main.py --group ablation         Run feature ablation study
   python main.py --from ensemble          Run from ensemble to end
   python main.py --dry-run                Show plan without executing
   python main.py --force-fallback         Use Energy-Charts instead of ENTSO-E

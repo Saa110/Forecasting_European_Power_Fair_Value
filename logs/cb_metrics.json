@@ -1,0 +1,5 @@
+{
+  "model": "CatBoost",
+  "sMAPE_median": 16.93,
+  "MAE_median": 11.44
+}

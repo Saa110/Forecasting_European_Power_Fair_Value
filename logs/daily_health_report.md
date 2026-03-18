@@ -1,5 +1,5 @@
 # Daily Pipeline Health Report
-**Generated:** 2026-03-18T14:08:15.676208
+**Generated:** 2026-03-18T18:18:31.258321
 **Mode:** Automated (rule-based fallback — set OPENAI_API_KEY for LLM reports)
 
 ## 1. Data Quality Summary

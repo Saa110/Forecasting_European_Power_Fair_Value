@@ -1,0 +1,5 @@
+{
+  "model": "MLP (Neural Net)",
+  "sMAPE_median": 22.5,
+  "MAE_median": 21.62
+}

@@ -1,27 +1,28 @@
 # European Power Fair Value
 ## Forecasting Day-Ahead Prices & Translating to Prompt Curve Views
 
-A quantitative prototype that forecasts hourly Day-Ahead electricity prices for the German (DE) bidding zone using publicly available ENTSO-E data, and translates those forecasts into tradable base/peak curve views with dynamic, volatility-aware trading signals.
+A quantitative prototype that forecasts hourly Day-Ahead electricity prices for the German (DE_LU) bidding zone using publicly available ENTSO-E data, and translates those forecasts into tradable base/peak curve views with dynamic, volatility-aware trading signals.
 
 ---
 
 ## Project Structure
 
-```
+```text
 ├── data/
 │   ├── raw/              # Unprocessed ENTSO-E API pulls (.gitignored)
 │   └── processed/        # Cleaned, feature-engineered datasets (.gitignored)
 ├── src/
 │   ├── ingestion/        # ENTSO-E API data pull scripts
 │   ├── qa/               # Quality assurance & feature engineering
-│   ├── models/           # Baseline, LightGBM, XGBoost, ensemble, curve translator
-│   └── llm/              # LLM-based REMIT UMM parser
+│   ├── models/           # Baseline & advanced models, ensemble, curve translator
+│   └── llm/              # LLM-based REMIT UMM parser & QA reports
 ├── logs/                 # Execution logs, LLM outputs, metrics
 ├── docs/
 │   ├── figures/          # Charts and plots
-│   └── report.md         # Final submission document
+│   └── report/           # Final submission document (report.tex & report.pdf)
 ├── .env.example          # Template for API keys
 ├── requirements.txt      # Python dependencies
+├── main.py               # Unified pipeline orchestrator
 └── README.md             # This file
 ```
 
@@ -48,23 +49,28 @@ cp .env.example .env
 # Edit .env with your ENTSO-E and OpenAI API keys
 ```
 
-### 3. Run the Pipeline (in order)
+### 3. Run the Pipeline
+The entire end-to-end pipeline is automated via `main.py`.
 
-| Step | Script | Description |
-|------|--------|-------------|
-| 1 | `python -m src.ingestion.data_ingest` | Pull raw data (ENTSO-E → Energy-Charts → cache fallback) |
-| 2 | `python -m src.qa.cleaner` | QA, DST-safe UTC conversion, anomaly detection, feature engineering |
-| 3 | `python -m src.models.baseline` | Train baseline models (Naive Persistence, Ridge ARX) |
-| 4 | `python -m src.models.lgbm_model` | Train LightGBM with 60-day rolling window |
-| 5 | `python -m src.models.xgb_model` | Train XGBoost with 60-day rolling window |
-| 6 | `python -m src.models.ensemble` | RMSE-weighted ensemble + model comparison |
-| 7 | `python -m src.models.curve_translator` | Generate base/peak views & trading signals |
-| 8 | `python -m src.llm.remit_parser` | LLM-based REMIT UMM parsing & signal invalidation |
-| 9 | `python -m src.llm.qa_health_report` | LLM-generated daily QA health report |
+```bash
+# Run the full pipeline (Ingestion -> QA -> Modeling -> Translation -> AI Reports)
+python main.py
+```
+
+**Advanced Usage:**
+```bash
+python main.py --steps ingest clean     # Run only ingestion + QA
+python main.py --group models           # Train all models and the ensemble
+python main.py --from curve             # Run from curve_translator onwards
+python main.py --group tuning           # Run hyperparameter tuning
+python main.py --group ablation         # Run feature ablation study
+python main.py --dry-run                # Print the execution plan without running
+```
+Run `python main.py --help` for full options.
 
 ## Data Sources
 
-All data is sourced from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) under EU Regulation 543/2013:
+All data is sourced from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) under EU Regulation 543/2013 (with automatic failover to Energy-Charts):
 
 - **Day-Ahead Prices** (Art. 12.1.D) — target variable
 - **Actual Total Load** (Art. 6.1.A) — demand fundamental
@@ -76,31 +82,33 @@ All data is sourced from the [ENTSO-E Transparency Platform](https://transparenc
 
 ## Models
 
-| Model | Type | Training Strategy |
+We train models on an expanding 60-day rolling window to prevent lookahead bias.
+
+| Model | Type | Strategy / Output |
 |-------|------|-------------------|
 | Naive Persistence | Baseline | Same-hour yesterday |
-| Ridge Regression (ARX) | Baseline | Full training set |
-| LightGBM | Improved | 60-day rolling window |
-| XGBoost | Improved | 60-day rolling window |
-| Weighted Ensemble | Improved | RMSE-weighted blend |
-
-All improved models produce probabilistic outputs (10th, 50th, 90th quantiles).
+| Ridge Regression (ARX) | Baseline | L2 Regularized Regression |
+| Linear Regression (OLS) | Structural | Ordinary Least Squares |
+| MLP (Neural Network) | Advanced | Multi-layer Perceptron |
+| LightGBM | Advanced | Probabilistic (q10, q50, q90) |
+| XGBoost | Advanced | Probabilistic (q10, q50, q90) |
+| CatBoost | Advanced | Probabilistic (q10, q50, q90) |
+| **Weighted Ensemble** | **Production** | RMSE-weighted blend of Top 3 Gradient Boosted Trees |
 
 ## Evaluation Metrics
 
-- **sMAPE** — Symmetric Mean Absolute Percentage Error (handles near-zero prices)
+- **sMAPE** — Symmetric Mean Absolute Percentage Error (natively handles zero & negative prices)
 - **MAE** — Mean Absolute Error in €/MWh
 - **Directional Accuracy** — % of hours where predicted price direction (up/down) matches actual
 - **Pinball Loss** — Quantile-specific calibration (q10, q50, q90)
-- **Quantile Crossing Rate** — Ensures q10 ≤ q50 ≤ q90
 
-## QA Approach
+## QA & Feature Engineering
 
-- DST-safe UTC conversion (handles CET/CEST transitions)
+- DST-safe UTC conversion (handles CET/CEST 23h/25h transitions)
 - Automated anomaly detection: missing hours, duplicate timestamps, monotonicity checks
-- Negative prices preserved (real market events from renewable oversupply)
-- Outliers flagged via IQR but **never deleted** — extreme spikes are genuine
-- Source provenance tracking (`source_quality` flag: PRIMARY/FALLBACK/CACHED)
+- Negative prices explicitly preserved (real market events from renewable oversupply)
+- Outliers flagged via IQR but **never deleted**
+- **14 Engineered Features**: Including autoregressive price/load lags, temporal signals, net load, and renewable penetration indices.
 
 ## License
 

@@ -51,11 +51,12 @@ for d in [PROCESSED_DIR, LOG_DIR, FIG_DIR]:
 # ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "qa_pipeline.log"),
+        logging.FileHandler(LOG_DIR / "qa_pipeline.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -76,7 +77,7 @@ class QAReport:
         logger.info(f"  QA: {message}")
 
     def save(self, path: Path):
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write("=" * 60 + "\n")
             f.write("QUALITY ASSURANCE REPORT\n")
             f.write("=" * 60 + "\n\n")

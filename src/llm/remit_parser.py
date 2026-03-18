@@ -43,11 +43,12 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 load_dotenv(PROJECT_ROOT / ".env")
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "remit_parser.log"),
+        logging.FileHandler(LOG_DIR / "remit_parser.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -297,7 +298,7 @@ def main():
         logger.info(f"  Invalidate:  {'⚠️  YES' if invalidate else '✅ NO'}")
 
     # Write structured log
-    with open(llm_log_path, "w") as f:
+    with open(llm_log_path, "w", encoding="utf-8") as f:
         for entry in results:
             f.write(json.dumps(entry, indent=2) + "\n\n")
 

@@ -47,11 +47,12 @@ for d in [LOG_DIR, FIG_DIR]:
 # ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "baseline.log"),
+        logging.FileHandler(LOG_DIR / "baseline.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -259,7 +260,7 @@ def main():
     }
 
     metrics_path = LOG_DIR / "baseline_metrics.json"
-    with open(metrics_path, "w") as f:
+    with open(metrics_path, "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
     logger.info(f"Metrics saved → {metrics_path}")
 

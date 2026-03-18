@@ -32,11 +32,12 @@ LOG_DIR = PROJECT_ROOT / "logs"
 for d in [LOG_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "xgb.log"),
+        logging.FileHandler(LOG_DIR / "xgb.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -177,7 +178,7 @@ def main():
     logger.info(f"  Pinball: q10={metrics['pinball_q10']}, q50={metrics['pinball_q50']}, q90={metrics['pinball_q90']}")
 
     preds.to_csv(PROCESSED_DIR / "xgb_predictions.csv")
-    with open(LOG_DIR / "xgb_metrics.json", "w") as f:
+    with open(LOG_DIR / "xgb_metrics.json", "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
 
     logger.info(f"Predictions saved → {PROCESSED_DIR / 'xgb_predictions.csv'}")

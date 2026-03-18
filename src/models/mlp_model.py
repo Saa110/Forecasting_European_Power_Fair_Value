@@ -22,10 +22,11 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 LOG_DIR = PROJECT_ROOT / "logs"
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[logging.FileHandler(LOG_DIR / "mlp.log"), logging.StreamHandler(sys.stdout)],
+    handlers=[logging.FileHandler(LOG_DIR / "mlp.log", encoding="utf-8"), logging.StreamHandler(sys.stdout)],
 )
 logger = logging.getLogger(__name__)
 
@@ -57,12 +58,12 @@ def rolling_window_train(df, split_date="2025-12-31"):
         "hidden_layer_sizes": (64, 32),
         "learning_rate_init": 0.001,
         "alpha": 0.0001,
-        "max_iter": 200,
+        "max_iter": 2000,
         "early_stopping": True,
         "random_state": 42
     }
     try:
-        with open(PROCESSED_DIR / "best_params.json") as f:
+        with open(PROCESSED_DIR / "best_params.json", encoding="utf-8") as f:
             bp = json.load(f).get("mlp", {})
             if bp:
                 if "hidden_layer_sizes" in bp:
@@ -140,7 +141,7 @@ def main():
 
     logger.info(f"MLP — sMAPE: {metrics['sMAPE_median']}% | MAE: {metrics['MAE_median']} €/MWh")
     preds.to_csv(PROCESSED_DIR / "mlp_predictions.csv")
-    with open(LOG_DIR / "mlp_metrics.json", "w") as f:
+    with open(LOG_DIR / "mlp_metrics.json", "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
 
 if __name__ == "__main__":

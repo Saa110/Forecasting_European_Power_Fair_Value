@@ -38,11 +38,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 LOG_DIR = PROJECT_ROOT / "logs"
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "tuning.log"),
+        logging.FileHandler(LOG_DIR / "tuning.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -196,7 +197,7 @@ def main():
 
     # Save
     out_path = PROCESSED_DIR / "best_params.json"
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(best_params, f, indent=4)
     logger.info(f"Saved optimal parameters to {out_path}")
 

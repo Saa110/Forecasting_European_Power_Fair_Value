@@ -34,11 +34,12 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 load_dotenv(PROJECT_ROOT / ".env")
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "qa_health_report.log"),
+        logging.FileHandler(LOG_DIR / "qa_health_report.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -67,19 +68,19 @@ def collect_pipeline_status() -> dict:
     # Baseline metrics
     baseline_path = LOG_DIR / "baseline_metrics.json"
     if baseline_path.exists():
-        with open(baseline_path) as f:
+        with open(baseline_path, encoding="utf-8") as f:
             status["baseline_metrics"] = json.load(f)
 
     # Model metrics
     model_path = LOG_DIR / "model_metrics.json"
     if model_path.exists():
-        with open(model_path) as f:
+        with open(model_path, encoding="utf-8") as f:
             status["model_metrics"] = json.load(f)
 
     # Curve translation signals
     curve_path = LOG_DIR / "curve_translation.json"
     if curve_path.exists():
-        with open(curve_path) as f:
+        with open(curve_path, encoding="utf-8") as f:
             signals = json.load(f)
             # Just the last 3 weeks for brevity
             status["curve_signals"] = signals[-3:] if len(signals) > 3 else signals
@@ -276,7 +277,7 @@ def main():
 
     # Save report
     report_path = LOG_DIR / "daily_health_report.md"
-    with open(report_path, "w") as f:
+    with open(report_path, "w", encoding="utf-8") as f:
         f.write(report)
     logger.info(f"Health report saved → {report_path}")
 

@@ -35,11 +35,12 @@ LOG_DIR = PROJECT_ROOT / "logs"
 for d in [LOG_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "lgbm.log"),
+        logging.FileHandler(LOG_DIR / "lgbm.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -193,7 +194,7 @@ def main():
 
     # Save
     preds.to_csv(PROCESSED_DIR / "lgbm_predictions.csv")
-    with open(LOG_DIR / "lgbm_metrics.json", "w") as f:
+    with open(LOG_DIR / "lgbm_metrics.json", "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
 
     logger.info(f"Predictions saved → {PROCESSED_DIR / 'lgbm_predictions.csv'}")

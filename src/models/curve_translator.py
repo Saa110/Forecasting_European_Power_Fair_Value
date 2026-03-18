@@ -43,11 +43,12 @@ FIG_DIR = PROJECT_ROOT / "docs" / "figures"
 for d in [LOG_DIR, FIG_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(LOG_DIR / "curve_translation.log"),
+        logging.FileHandler(LOG_DIR / "curve_translation.log", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
@@ -317,7 +318,7 @@ def main():
 
     # Step 4: Save
     output_path = LOG_DIR / "curve_translation.json"
-    with open(output_path, "w") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(signals, f, indent=2)
     logger.info(f"Curve translation saved → {output_path}")
 

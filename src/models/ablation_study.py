@@ -42,10 +42,11 @@ FIG_DIR = PROJECT_ROOT / "docs" / "figures"
 for d in [LOG_DIR, FIG_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[logging.FileHandler(LOG_DIR / "ablation.log"), logging.StreamHandler(sys.stdout)],
+    handlers=[logging.FileHandler(LOG_DIR / "ablation.log", encoding="utf-8"), logging.StreamHandler(sys.stdout)],
 )
 logger = logging.getLogger(__name__)
 
@@ -105,7 +106,7 @@ def run_ablation(df, split_date="2025-12-31"):
     # Get tuned LGBM params if available
     params = {"n_estimators": 200, "learning_rate": 0.05, "max_depth": 6, "random_state": 42, "n_jobs": -1, "verbosity": -1}
     try:
-        with open(PROCESSED_DIR / "best_params.json") as f:
+        with open(PROCESSED_DIR / "best_params.json", encoding="utf-8") as f:
             bp = json.load(f).get("lgbm", {})
             if bp:
                 params.update(bp)
@@ -203,7 +204,7 @@ def main():
     results = run_ablation(df)
     
     out_path = PROCESSED_DIR / "ablation_metrics.json"
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=4)
         
     plot_ablation(results)

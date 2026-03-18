@@ -21,10 +21,11 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 LOG_DIR = PROJECT_ROOT / "logs"
 
+sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[logging.FileHandler(LOG_DIR / "linear.log"), logging.StreamHandler(sys.stdout)],
+    handlers=[logging.FileHandler(LOG_DIR / "linear.log", encoding="utf-8"), logging.StreamHandler(sys.stdout)],
 )
 logger = logging.getLogger(__name__)
 
@@ -116,7 +117,7 @@ def main():
 
     logger.info(f"Linear OLS — sMAPE: {metrics['sMAPE_median']}% | MAE: {metrics['MAE_median']} €/MWh")
     preds.to_csv(PROCESSED_DIR / "linear_predictions.csv")
-    with open(LOG_DIR / "linear_metrics.json", "w") as f:
+    with open(LOG_DIR / "linear_metrics.json", "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
 
 if __name__ == "__main__":

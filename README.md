@@ -31,7 +31,7 @@ A quantitative prototype that forecasts hourly Day-Ahead electricity prices for 
 ### 1. Environment Setup
 ```bash
 # Clone the repository
-git clone <repo-url>
+git clone https://github.com/Saa110/Forecasting_European_Power_Fair_Value.git
 cd Forecasting_European_Power_Fair_Value
 
 # Create and activate virtual environment
